@@ -1,0 +1,187 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<definitions xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:ns2="http://www.omg.org/spec/DD/20100524/DC" xmlns:ns3="http://www.omg.org/spec/DD/20100524/DI" xmlns:ns4="http://www.omg.org/spec/BPMN/20100524/DI" id="m356c3f25-d449-4f75-99e9-1caac22a534b" name="BPMN" targetNamespace="http://www.omg.org/bpmn20">
+    <process isClosed="false" processType="None" name="Zaposleni" id="m39ca89df-ed10-4b50-9653-f7be91741e19">
+        <startEvent isInterrupting="false" parallelMultiple="false" name="Početak" id="m7f086e81-9e58-4326-866e-b4b5259ec846">
+            <ns5:outgoing xmlns:ns5="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns="">b3f3ca72-a132-4971-be97-f75bfdbdb769</ns5:outgoing>
+        </startEvent>
+        <callActivity isForCompensation="false" startQuantity="1" completionQuantity="1" name="Zahtev za odmor" id="a8b97f11-69b4-4d3d-a41e-818792b29f1f">
+            <ns5:incoming xmlns:ns5="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns="">b3f3ca72-a132-4971-be97-f75bfdbdb769</ns5:incoming>
+        </callActivity>
+        <sequenceFlow sourceRef="m76334f95-5b7e-465d-9fd0-a351d2aded41" targetRef="m4abfbbac-3b23-4287-95a8-235cd376fc63" name="Sequence Flow" id="m2fe85747-4ff0-425a-845c-7817633ea53e"/>
+        <callActivity isForCompensation="false" startQuantity="1" completionQuantity="1" name="Primanje informacije o odmoru" id="m81f815b9-c287-4505-a424-68c59c994496">
+            <ns5:outgoing xmlns:ns5="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns="">m4cf1974a-bfd7-4bfc-8c3c-a750b3d07917</ns5:outgoing>
+        </callActivity>
+        <sequenceFlow sourceRef="m7f086e81-9e58-4326-866e-b4b5259ec846" targetRef="a8b97f11-69b4-4d3d-a41e-818792b29f1f" name="Sequence Flow1" id="b3f3ca72-a132-4971-be97-f75bfdbdb769"/>
+        <endEvent name="Odmor prijavljen" id="b908e5c9-c4e8-42ba-b3d3-ad79ea31ddac">
+            <ns5:incoming xmlns:ns5="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns="">m838ddfdc-0d0b-4fda-b526-61c3a7aab556</ns5:incoming>
+        </endEvent>
+        <callActivity isForCompensation="false" startQuantity="1" completionQuantity="1" name="Prijavi odmor" id="m94680b08-d1f6-45f7-a068-3bc6348cb981">
+            <ns5:incoming xmlns:ns5="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns="">m315e938f-8ceb-43ea-a593-91e577544f6c</ns5:incoming>
+            <ns5:outgoing xmlns:ns5="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns="">m838ddfdc-0d0b-4fda-b526-61c3a7aab556</ns5:outgoing>
+        </callActivity>
+        <startEvent isInterrupting="false" parallelMultiple="false" name="Pocetak" id="f9bb1148-97b1-4531-8f5d-8a0bca38ae3e">
+            <ns5:outgoing xmlns:ns5="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns="">m00b1b079-e8f4-439d-80ed-79f44482e8f4</ns5:outgoing>
+        </startEvent>
+        <endEvent name="Kraj" id="m1479d289-dd2f-4537-a10f-eaa86c5d7ade">
+            <ns5:incoming xmlns:ns5="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns="">m1c4f8b88-c868-4891-8049-77d26fba481c</ns5:incoming>
+        </endEvent>
+        <callActivity isForCompensation="false" startQuantity="1" completionQuantity="1" name="Napravi raspored smena i pošalji" id="ff64e5c2-2512-4488-9bc7-fa411ab09d0d">
+            <ns5:incoming xmlns:ns5="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns="">m00b1b079-e8f4-439d-80ed-79f44482e8f4</ns5:incoming>
+            <ns5:outgoing xmlns:ns5="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns="">m1c4f8b88-c868-4891-8049-77d26fba481c</ns5:outgoing>
+        </callActivity>
+        <sequenceFlow sourceRef="m94680b08-d1f6-45f7-a068-3bc6348cb981" targetRef="b908e5c9-c4e8-42ba-b3d3-ad79ea31ddac" name="Sequence Flow5" id="m838ddfdc-0d0b-4fda-b526-61c3a7aab556"/>
+        <endEvent name="Zahtev nije odobren" id="m3c380e9e-061a-4620-85fb-f8c33bb7e27a">
+            <ns5:incoming xmlns:ns5="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns="">m6211f53f-456b-41e4-9fb1-dbb85be62fb1</ns5:incoming>
+        </endEvent>
+        <sequenceFlow sourceRef="f9bb1148-97b1-4531-8f5d-8a0bca38ae3e" targetRef="ff64e5c2-2512-4488-9bc7-fa411ab09d0d" name="Sequence Flow8" id="m00b1b079-e8f4-439d-80ed-79f44482e8f4"/>
+        <sequenceFlow sourceRef="ff64e5c2-2512-4488-9bc7-fa411ab09d0d" targetRef="m1479d289-dd2f-4537-a10f-eaa86c5d7ade" name="Sequence Flow9" id="m1c4f8b88-c868-4891-8049-77d26fba481c"/>
+        <exclusiveGateway gatewayDirection="Unspecified" name="" id="m1569a7fe-373b-48e3-a606-6a766d1afd7b">
+            <ns5:incoming xmlns:ns5="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns="">m4cf1974a-bfd7-4bfc-8c3c-a750b3d07917</ns5:incoming>
+            <ns5:outgoing xmlns:ns5="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns="">m6211f53f-456b-41e4-9fb1-dbb85be62fb1</ns5:outgoing>
+            <ns5:outgoing xmlns:ns5="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns="">m315e938f-8ceb-43ea-a593-91e577544f6c</ns5:outgoing>
+        </exclusiveGateway>
+        <sequenceFlow sourceRef="m81f815b9-c287-4505-a424-68c59c994496" targetRef="m1569a7fe-373b-48e3-a606-6a766d1afd7b" name="Sequence Flow2" id="m4cf1974a-bfd7-4bfc-8c3c-a750b3d07917"/>
+        <sequenceFlow sourceRef="m1569a7fe-373b-48e3-a606-6a766d1afd7b" targetRef="m3c380e9e-061a-4620-85fb-f8c33bb7e27a" name="NE" id="m6211f53f-456b-41e4-9fb1-dbb85be62fb1"/>
+        <sequenceFlow sourceRef="m1569a7fe-373b-48e3-a606-6a766d1afd7b" targetRef="m94680b08-d1f6-45f7-a068-3bc6348cb981" name="Sequence Flow4" id="m315e938f-8ceb-43ea-a593-91e577544f6c">
+            <conditionExpression>DA</conditionExpression>
+        </sequenceFlow>
+    </process>
+    <collaboration name="Collaboration" isClosed="false" id="m06d0d75d-f463-49f7-a589-9f644fdc1624">
+        <ns5:participant xmlns:ns5="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns="" name="Zaposleni" processRef="m39ca89df-ed10-4b50-9653-f7be91741e19" id="m829013ed-f587-4d15-9bc0-0d7b50059691"/>
+        <ns5:participant xmlns:ns5="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns="" name="HR" processRef="m98b390ac-eaa3-4921-b612-7d3f853fcb11" id="e61803d2-f6ab-416d-94dc-63bc837c8d0b"/>
+        <ns5:participant xmlns:ns5="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns="" name="Zaposleni" processRef="m168c2703-8807-4dc5-81fd-6be00d4eae06" id="m496c7ec1-5e58-446e-94d5-51d98d1a35c8"/>
+        <ns5:messageFlow xmlns:ns5="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns="" name="" sourceRef="m4abfbbac-3b23-4287-95a8-235cd376fc63" targetRef="m81f815b9-c287-4505-a424-68c59c994496" id="fe6f3a44-8427-4b8d-b319-741676325530"/>
+        <ns5:messageFlow xmlns:ns5="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns="" name="" sourceRef="ff64e5c2-2512-4488-9bc7-fa411ab09d0d" targetRef="m9739cf40-d3a3-4835-87df-220cedc412e3" id="ad8a578e-6cef-4ca8-a34c-1ee5cc73bd56"/>
+        <ns5:messageFlow xmlns:ns5="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns="" name="" sourceRef="a8b97f11-69b4-4d3d-a41e-818792b29f1f" targetRef="m76334f95-5b7e-465d-9fd0-a351d2aded41" id="ae5f9026-7a91-478e-883e-120a20fc22dc"/>
+    </collaboration>
+    <process isClosed="false" processType="None" name="HR" id="m98b390ac-eaa3-4921-b612-7d3f853fcb11">
+        <callActivity isForCompensation="false" startQuantity="1" completionQuantity="1" name="Prijem zahteva za odmor" id="m76334f95-5b7e-465d-9fd0-a351d2aded41">
+            <ns5:outgoing xmlns:ns5="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns="">m2fe85747-4ff0-425a-845c-7817633ea53e</ns5:outgoing>
+        </callActivity>
+        <callActivity isForCompensation="false" startQuantity="1" completionQuantity="1" name="Obrada zahteva i odgovora" id="m4abfbbac-3b23-4287-95a8-235cd376fc63">
+            <ns5:incoming xmlns:ns5="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns="">m2fe85747-4ff0-425a-845c-7817633ea53e</ns5:incoming>
+        </callActivity>
+    </process>
+    <process isClosed="false" processType="None" name="Zaposleni" id="m168c2703-8807-4dc5-81fd-6be00d4eae06">
+        <callActivity isForCompensation="false" startQuantity="1" completionQuantity="1" name="Pregled rasporeda smena" id="m9739cf40-d3a3-4835-87df-220cedc412e3"/>
+    </process>
+    <ns4:BPMNDiagram name="Process Bpmn Process diagram" id="f5117c29-45b6-4fce-a95e-9d7bf9c8fb82">
+        <ns4:BPMNPlane xmlns:ns5="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns="" bpmnElement="m06d0d75d-f463-49f7-a589-9f644fdc1624">
+            <ns4:BPMNShape bpmnElement="e61803d2-f6ab-416d-94dc-63bc837c8d0b" id="e61803d2-f6ab-416d-94dc-63bc837c8d0b-gr">
+                <ns2:Bounds x="50.0" y="290.0" width="761.0" height="121.0"/>
+            </ns4:BPMNShape>
+            <ns4:BPMNShape isHorizontal="true" isMarkerVisible="true" isMessageVisible="true" bpmnElement="m7f086e81-9e58-4326-866e-b4b5259ec846" id="m7f086e81-9e58-4326-866e-b4b5259ec846-gr">
+                <ns2:Bounds x="120.0" y="52.0" width="33.0" height="33.0"/>
+                <ns4:BPMNLabel>
+                    <ns2:Bounds x="114.0" y="85.0" width="44.0" height="20.0"/>
+                </ns4:BPMNLabel>
+            </ns4:BPMNShape>
+            <ns4:BPMNShape bpmnElement="a8b97f11-69b4-4d3d-a41e-818792b29f1f" id="a8b97f11-69b4-4d3d-a41e-818792b29f1f-gr">
+                <ns2:Bounds x="220.0" y="52.0" width="100.0" height="50.0"/>
+            </ns4:BPMNShape>
+            <ns4:BPMNEdge bpmnElement="m2fe85747-4ff0-425a-845c-7817633ea53e" id="m2fe85747-4ff0-425a-845c-7817633ea53e-gr">
+                <ns3:waypoint x="250.0" y="335.0"/>
+                <ns3:waypoint x="320.0" y="335.0"/>
+            </ns4:BPMNEdge>
+            <ns4:BPMNShape bpmnElement="m81f815b9-c287-4505-a424-68c59c994496" id="m81f815b9-c287-4505-a424-68c59c994496-gr">
+                <ns2:Bounds x="360.0" y="52.0" width="100.0" height="50.0"/>
+            </ns4:BPMNShape>
+            <ns4:BPMNEdge bpmnElement="b3f3ca72-a132-4971-be97-f75bfdbdb769" id="b3f3ca72-a132-4971-be97-f75bfdbdb769-gr">
+                <ns3:waypoint x="153.0" y="75.0"/>
+                <ns3:waypoint x="220.0" y="75.0"/>
+            </ns4:BPMNEdge>
+            <ns4:BPMNShape isHorizontal="true" isMarkerVisible="true" isMessageVisible="true" bpmnElement="b908e5c9-c4e8-42ba-b3d3-ad79ea31ddac" id="b908e5c9-c4e8-42ba-b3d3-ad79ea31ddac-gr">
+                <ns2:Bounds x="760.0" y="104.0" width="33.0" height="33.0"/>
+                <ns4:BPMNLabel>
+                    <ns2:Bounds x="751.0" y="137.0" width="49.0" height="35.0"/>
+                </ns4:BPMNLabel>
+            </ns4:BPMNShape>
+            <ns4:BPMNShape bpmnElement="m94680b08-d1f6-45f7-a068-3bc6348cb981" id="m94680b08-d1f6-45f7-a068-3bc6348cb981-gr">
+                <ns2:Bounds x="640.0" y="104.0" width="100.0" height="50.0"/>
+            </ns4:BPMNShape>
+            <ns4:BPMNEdge bpmnElement="m838ddfdc-0d0b-4fda-b526-61c3a7aab556" id="m838ddfdc-0d0b-4fda-b526-61c3a7aab556-gr">
+                <ns3:waypoint x="740.0" y="124.0"/>
+                <ns3:waypoint x="760.0" y="124.0"/>
+            </ns4:BPMNEdge>
+            <ns4:BPMNShape isHorizontal="true" isMarkerVisible="true" isMessageVisible="true" bpmnElement="m3c380e9e-061a-4620-85fb-f8c33bb7e27a" id="m3c380e9e-061a-4620-85fb-f8c33bb7e27a-gr">
+                <ns2:Bounds x="780.0" y="20.0" width="33.0" height="33.0"/>
+                <ns4:BPMNLabel>
+                    <ns2:Bounds x="765.0" y="53.0" width="62.0" height="35.0"/>
+                </ns4:BPMNLabel>
+            </ns4:BPMNShape>
+            <ns4:BPMNShape isHorizontal="true" isMarkerVisible="true" isMessageVisible="true" bpmnElement="m1569a7fe-373b-48e3-a606-6a766d1afd7b" id="m1569a7fe-373b-48e3-a606-6a766d1afd7b-gr">
+                <ns2:Bounds x="520.0" y="65.0" width="40.0" height="40.0"/>
+                <ns4:BPMNLabel>
+                    <ns2:Bounds x="540.0" y="105.0" width="8.0" height="8.0"/>
+                </ns4:BPMNLabel>
+            </ns4:BPMNShape>
+            <ns4:BPMNEdge bpmnElement="m4cf1974a-bfd7-4bfc-8c3c-a750b3d07917" id="m4cf1974a-bfd7-4bfc-8c3c-a750b3d07917-gr">
+                <ns3:waypoint x="460.0" y="84.0"/>
+                <ns3:waypoint x="520.0" y="84.0"/>
+            </ns4:BPMNEdge>
+            <ns4:BPMNEdge bpmnElement="m6211f53f-456b-41e4-9fb1-dbb85be62fb1" id="m6211f53f-456b-41e4-9fb1-dbb85be62fb1-gr">
+                <ns3:waypoint x="539.0" y="65.0"/>
+                <ns3:waypoint x="539.0" y="52.0"/>
+                <ns3:waypoint x="780.0" y="43.0"/>
+            </ns4:BPMNEdge>
+            <ns4:BPMNEdge bpmnElement="m315e938f-8ceb-43ea-a593-91e577544f6c" id="m315e938f-8ceb-43ea-a593-91e577544f6c-gr">
+                <ns3:waypoint x="539.0" y="105.0"/>
+                <ns3:waypoint x="539.0" y="127.0"/>
+                <ns3:waypoint x="601.0" y="127.0"/>
+                <ns3:waypoint x="601.0" y="127.0"/>
+                <ns3:waypoint x="640.0" y="127.0"/>
+            </ns4:BPMNEdge>
+            <ns4:BPMNEdge bpmnElement="fe6f3a44-8427-4b8d-b319-741676325530" id="fe6f3a44-8427-4b8d-b319-741676325530-gr">
+                <ns3:waypoint x="400.0" y="310.0"/>
+                <ns3:waypoint x="400.0" y="102.0"/>
+            </ns4:BPMNEdge>
+            <ns4:BPMNEdge bpmnElement="ae5f9026-7a91-478e-883e-120a20fc22dc" id="ae5f9026-7a91-478e-883e-120a20fc22dc-gr">
+                <ns3:waypoint x="230.0" y="102.0"/>
+                <ns3:waypoint x="230.0" y="310.0"/>
+            </ns4:BPMNEdge>
+            <ns4:BPMNShape bpmnElement="m76334f95-5b7e-465d-9fd0-a351d2aded41" id="m76334f95-5b7e-465d-9fd0-a351d2aded41-gr">
+                <ns2:Bounds x="150.0" y="310.0" width="100.0" height="50.0"/>
+            </ns4:BPMNShape>
+            <ns4:BPMNShape bpmnElement="m4abfbbac-3b23-4287-95a8-235cd376fc63" id="m4abfbbac-3b23-4287-95a8-235cd376fc63-gr">
+                <ns2:Bounds x="320.0" y="310.0" width="121.0" height="50.0"/>
+            </ns4:BPMNShape>
+        </ns4:BPMNPlane>
+    </ns4:BPMNDiagram>
+    <ns4:BPMNDiagram name="Process Bpmn Process diagram (1)" id="a9b5e191-88fd-4743-b382-3e422b87dc03">
+        <ns4:BPMNPlane xmlns:ns5="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns="" bpmnElement="m06d0d75d-f463-49f7-a589-9f644fdc1624">
+            <ns4:BPMNShape bpmnElement="m496c7ec1-5e58-446e-94d5-51d98d1a35c8" id="m496c7ec1-5e58-446e-94d5-51d98d1a35c8-gr">
+                <ns2:Bounds x="48.0" y="210.0" width="553.0" height="131.0"/>
+            </ns4:BPMNShape>
+            <ns4:BPMNShape isHorizontal="true" isMarkerVisible="true" isMessageVisible="true" bpmnElement="f9bb1148-97b1-4531-8f5d-8a0bca38ae3e" id="f9bb1148-97b1-4531-8f5d-8a0bca38ae3e-gr">
+                <ns2:Bounds x="100.0" y="50.0" width="33.0" height="33.0"/>
+                <ns4:BPMNLabel>
+                    <ns2:Bounds x="94.0" y="83.0" width="44.0" height="20.0"/>
+                </ns4:BPMNLabel>
+            </ns4:BPMNShape>
+            <ns4:BPMNShape isHorizontal="true" isMarkerVisible="true" isMessageVisible="true" bpmnElement="m1479d289-dd2f-4537-a10f-eaa86c5d7ade" id="m1479d289-dd2f-4537-a10f-eaa86c5d7ade-gr">
+                <ns2:Bounds x="490.0" y="50.0" width="33.0" height="33.0"/>
+                <ns4:BPMNLabel>
+                    <ns2:Bounds x="495.0" y="83.0" width="22.0" height="20.0"/>
+                </ns4:BPMNLabel>
+            </ns4:BPMNShape>
+            <ns4:BPMNShape bpmnElement="ff64e5c2-2512-4488-9bc7-fa411ab09d0d" id="ff64e5c2-2512-4488-9bc7-fa411ab09d0d-gr">
+                <ns2:Bounds x="220.0" y="42.0" width="100.0" height="50.0"/>
+            </ns4:BPMNShape>
+            <ns4:BPMNEdge bpmnElement="m00b1b079-e8f4-439d-80ed-79f44482e8f4" id="m00b1b079-e8f4-439d-80ed-79f44482e8f4-gr">
+                <ns3:waypoint x="133.0" y="64.0"/>
+                <ns3:waypoint x="220.0" y="64.0"/>
+            </ns4:BPMNEdge>
+            <ns4:BPMNEdge bpmnElement="m1c4f8b88-c868-4891-8049-77d26fba481c" id="m1c4f8b88-c868-4891-8049-77d26fba481c-gr">
+                <ns3:waypoint x="320.0" y="69.0"/>
+                <ns3:waypoint x="490.0" y="69.0"/>
+            </ns4:BPMNEdge>
+            <ns4:BPMNEdge bpmnElement="ad8a578e-6cef-4ca8-a34c-1ee5cc73bd56" id="ad8a578e-6cef-4ca8-a34c-1ee5cc73bd56-gr">
+                <ns3:waypoint x="260.0" y="92.0"/>
+                <ns3:waypoint x="260.0" y="240.0"/>
+            </ns4:BPMNEdge>
+            <ns4:BPMNShape bpmnElement="m9739cf40-d3a3-4835-87df-220cedc412e3" id="m9739cf40-d3a3-4835-87df-220cedc412e3-gr">
+                <ns2:Bounds x="220.0" y="240.0" width="100.0" height="50.0"/>
+            </ns4:BPMNShape>
+        </ns4:BPMNPlane>
+    </ns4:BPMNDiagram>
+</definitions>
