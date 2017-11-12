@@ -1,0 +1,61 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage{graphicx}
+\usepackage{enumitem}
+\begin{document}
+\section{Zalihe namirnica}
+Pregled stanja zaliha namirnica je slučaj upotrebe u kome se formalizuje način na koji ugostiteljski objekat planira nabavku namirnica, nabavlja, a potom ih dodaje na stanje. U tom procesu učestvuju menadžer nabavke (zaposleni) i dobavljač. 
+
+\begin{itemize}
+\item Zaposleni kreira spisak namirnica čija je trenutna količina ispod propisane minimalne. Na osnovu tog spiska, kreira porudžbinu. Kasnije, nakon isporuke porudžbine, unosi u bazu pristiglu robu.
+\item Dobavljač isporučuje ugostiteljskom objektu namirnice u traženoj količini.
+\end{itemize}
+\includegraphics[width=\textwidth]{zalihe.png}
+\subsection{\textbf{Use Case}: Zalihe na minimumu}
+\textbf{Akter:} Radnik/menadžer nabavke\\
+\textbf{Ulaz:} Nema\\
+\textbf{Izlaz:} Kreiran je spisak namirnica čije su zalihe na minimumu.\\
+\textbf{Preduslovi:} Radnik poseduje username i lozinku za prijavljivanje na glavni sistem gde se nalaze informacije o namirnicama.\\
+\textbf{Postuslov:} Uspešno je kreiran spisak namirnica.\\
+\textbf{Glavni tok:} Radnik zahteva od sistema spisak namirnica za koje važi da je trenutna količina manja od minimalne propisane.\\
+\textbf{Alternativni tok:} Prijavljivanje nije uspešno, spisak se ne može napraviti.\\
+
+\subsection{\textbf{Use Case}: Kreiranje porudžbine}
+\textbf{Akter:} Radnik/menadžer nabavke\\
+\textbf{Ulaz:} Lista namirnica čije su zalihe na minimumu.\\
+\textbf{Izlaz:} Lista poručenih namirnica.\\
+\textbf{Preduslovi:} Radnik ima uvid u spisak namirnica čija je količina manja od poželjne.\\
+\textbf{Postuslov:} Porudžbina je kreirana.\\
+\textbf{Glavni tok:} Radnik uzima listu namirnica koje bi trebalo nabaviti i procenjuje količinu za nabavku. Na spisak može dodati i namirnice kojih nema i nikada ih nije bilo u sistemu. Kreira porudžbinu.\\
+\textbf{Alternativni tok:} Ukoliko je lista namirnica na minimalnim zalihama prazna, procena se ne vrši.\\
+
+\subsection{\textbf{Use Case}:  Pristizanje namirnica}
+\textbf{Akter:} Dobavljač\\
+\textbf{Ulaz:} Lista poručenih namirnica.\\
+\textbf{Izlaz:} Lista namirnica koje je dobavljač isporučio ugostiteljskom objektu.\\
+\textbf{Preduslovi:} Dobavljač je dobio porudžbinu.\\
+\textbf{Postuslov:} Namirnice su isporučene kupcu i kreirana je lista dostavljenih proizvoda.\\
+\textbf{Glavni tok:} Dobavljač isporučuje dogovorene količine namirnica ugostiteljskom objektu smanjujući količinu ukoliko ona prevazilazi njegove mogućnosti.\\
+\textbf{Alternativni tok:} Zbog manjka raspoloživih namirnica, dobavljač otkazuje porudžbinu.\\
+
+\subsection{\textbf{Use Case}: Unos namirnica u sistem}
+\textbf{Akter:} Radnik\\
+\textbf{Ulaz:} Spisak namirnica koje je dobavljač isporučio.\\
+\textbf{Izlaz:} Ažurirana je lista namirnica.\\
+\textbf{Preduslovi:} Radnik poseduje username i lozinku za prijavljivanje na glavni sistem. Dobavljač je dostavio poručene namirnice.\\
+\textbf{Postuslov:} Ažurirane su količine namirnica i eventualno unete nove.\\
+\textbf{Glavni tok:} Radnik za svaku sa liste dostavljenih namirnica unosi isporučenu količinu. Ukoliko namirnica ne postoji u sistemu, kreira je. Za novounetu namirnicu definiše minimumalnu količinu.\\
+\textbf{Alternativni tok:} Porudžbina je otkazana, nema unosa.\\
+
+\subsection{\textbf{Use Case}: Ažuriranje jelovnika}
+\textbf{Akter:} Radnik\\
+\textbf{Ulaz:} Spisak namirnica u restoranu i spisak jela sa neophodnim namirnicama za njihovu pripremu.\\
+\textbf{Izlaz:} Kreiran je jelovnik.\\
+\textbf{Preduslovi:} Radnik poseduje username i lozinku za prijavljivanje na glavni sistem. Spisak jela i sastojaka od kojih se pripremaju nije prazan.\\
+\textbf{Postuslov:} Jelovnik je kreiran. Gosti i zaposleni ga mogu videti.\\
+\textbf{Glavni tok:} Radnik ažurira jelovnik tako što sistem na njegov zahtev iz liste jela izbacuje ona za čiju pripremu nedostaje makar jedan sastojak.\\
+\textbf{Alternativni tok:} Prijavljivanje nije uspešno, jelovnik se ne može ažurirati.\\ \\
+\includegraphics[width=\textwidth]{zalihe-activity.png}
+
+
+\end{document}
