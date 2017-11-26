@@ -1,0 +1,47 @@
+Porudžbina je niz slučajeva upotrebe u kojima se formalizuje komunikacija 3 učesnika - gosta, konobara i kuhinje, tokom života jedne porudžbine. Ova porudžbina može biti preko onlajn servisa, ili direktno preko konobara.
+
+Use case: Gost poručuje jelo
+Akteri: Gost kafane, konobar
+Ulaz: Jelovnik.
+Izlaz: Porudžbina.
+Preduslovi: Gost je u kafani.
+Postuslov: Uspešno je napravljen skup porudzbina gosta.
+Glavni tok: Gost potrazuje jelo sa menija, i konobar uspesno beleži narudžbinu
+Alternativni tok: Gost je nezadovoljan zbog dugog čekanja konobara
+
+Use case: Konobar prenosi porudžbinu kuhinji
+Akteri: konobar
+Ulaz: Jelovnik
+Izlaz: Osvežen globalni spisak porudžbina kojim se vodi rad kuhinje
+Preduslov: Konobar je preuzeo porudžbinu od gosta.
+Postuslov: Porudžbina je sačuvana na sigurnom mestu gde će biti preuzeta od strane kuhinje.
+Glavni tok: Konobar dodaje porudžbinu na listu porudžbina
+Alternativni tok: Konobar ne uspeva da doda porudžbinu usred tehničkih problema sistema, pa lično prenosi porudžbinu kuhinji.
+
+Use case: Kuhinja obrađuje porudžbinu
+Akter: Kuhinja (kuvar)
+Ulaz: Porudžbina sa globalne liste porudžbina
+Izlaz: Pripremljeno jelo sa porudžbine.
+Preduslov: Postoji bar jedna porudžbina na listi
+Postuslov: Pripremljena sva jela sa odabrane porudžbine
+Glavni tok: Kuhinja bira najstariju porudžbinu (onu koja je najduže čekala da bude obrađena), i priprema jela sa porudžbine. Nakon pripreme jela, kuhinja kontaktira konobara da preuzme jelo, i odnese ga gostu.
+Alternativni tok: Nema svih sastojaka potrebnih za pripremu jela.
+Alternativni tok 2: Bolestan konobar čiji je specijalitet traženo jelo.
+
+Use case: Isporuka jela
+Akteri: Konobar, gost
+Ulaz: Gotovo jelo koje je konobar preuzeo iz kuhinje
+Izlaz: Servirano jelo na stolu gosta kafane.
+Preduslov: Kuhinja pripremila jelo
+Postuslov: Gost jede jelo.
+Glavni tok: Kuhinja obaveštava konobara da su sva jela sa određene narudžbine pripremljena. Konobar preuzima jelo, i odnosi ga do gosta čija narudžbina je obrađena.
+Alternativni tok: Konobar se sapleo prilikom donošenja jela.
+
+Use case: Online narudžbina
+Akter: Posetilac sajta
+Ulaz: Online ponuda jela
+Izlaz: Online porudžbina
+Preduslovi: Posetilac sajta ima stabilnu internet konekciju.
+Postuslovi: Porudžbina je upisana u globalni spisak porudžbina kojim se vodi rad kuhinje
+Glavni tok: Klijent posećuje sajt, i bira jelo koje želi da naruči.
+Alternativni tok: Porudžbina nije prihvaćena (usled gužve u kuhinji, problema sa konekcijom sa klijentom ili nekog drugog razloga)
