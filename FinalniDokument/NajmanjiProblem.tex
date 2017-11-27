@@ -317,8 +317,16 @@ Upravljanje ljudskim resursima je slučaj upotrebe u kojem se definišu raspored
 \textbf{Izlaz:} Redni broj zahteva za rezervaciju.\\
 \textbf{Preduslovi:} Nema.\\
 \textbf{Postuslov:} Uspešno je kreiran zahtev za rezervaciju.\\
-\textbf{Glavni tok:} Potencijalni gost vrši navigaciju na stranu za rezervaciju, unosi zahtevane podatke i dobija potvrdu da je zahtev za rezervaciju dostavljen restoranu na obradu.\\
-\textbf{Alternativni tok:} Potvrda o poslatom zahtevu ne stiže u roku od 2 minuta, prikazuje se izvinjenje i kontakt telefon kojim se može izvršiti rezervacija "offline".\\
+\textbf{Glavni tok:}
+\begin{enumerate}
+\item Korisnik vrši navigaciju na stranu za rezervaciju
+\item Korisnik unosi zahtevane podatke
+\item Korisnik šalje restoranu zahtev za rezervaciju
+\item Korisnik dobija potvrdu da je zahtev za rezervaciju dostavljen restoranu na obradu.\\
+\end{enumerate}
+\textbf{Alternativni tok:}\\
+		4.1.1 Potvrda o poslatom zahtevu ne stiže u roku od 2 minuta\\
+		4.1.2 Prikazuje se izvinjenje i kontakt telefon kojim se može izvršiti rezervacija "offline".\\
 
 \subsubsection{\textbf{Use Case}: Pregled rezervacija}
 \textbf{Akter:} Zaposleni restorana\\
@@ -326,8 +334,15 @@ Upravljanje ljudskim resursima je slučaj upotrebe u kojem se definišu raspored
 \textbf{Izlaz:} Spisak registrovanih rezervacija koje odgovaraju kriterijumu pretrage.\\
 \textbf{Preduslovi:} Zaposleni ima pristup glavnom sistemu.\\
 \textbf{Postuslov:} Nema.\\
-\textbf{Glavni tok:} Zaposleni unosi ulazne parametre i dobija tabelarni prikaz registrovanih rezervacija koje zadovoljavaju kriterijume pretrage.\\
-\textbf{Alternativni tok:} Nema.\\
+\textbf{Glavni tok:}
+\begin{enumerate}
+\item Korisnik unosi korisničko ime i lozinku
+\item Korisnik se prijavljuje na sistem
+\item Korisnik unosi ulazne parametre
+\item Korisnik dobija tabelarni prikaz registrovanih rezervacija koje zadovoljavaju kriterijume pretrage.\\
+\end{enumerate}
+\textbf{Alternativni tok:}\\
+        2.1. Prijavljivanje nije uspešno, korisnik se preusmerava na poruku sa greškom.\\
 
 \subsubsection{\textbf{Use Case}:  Odobravanje rezervacija}
 \textbf{Akter:} Šef smene/sale\\
@@ -335,8 +350,16 @@ Upravljanje ljudskim resursima je slučaj upotrebe u kojem se definišu raspored
 \textbf{Izlaz:} Rezervacija odobrena ili odbijena i redni broj rezervacije.\\
 \textbf{Preduslovi:} Postoji barem jedan neobradjen zahtev za rezervaciju i trenutni korisnik sistema ima pravo da pristupi odobravanju rezervacija.\\
 \textbf{Postuslov:} Informacije o odobrenim rezervacijama su sačuvane u sistemu.\\
-\textbf{Glavni tok:} Šef smene/sale pregleda spisak dospelih zahteva za rezervaciju i za svaki od zahteva vrši pregled rezervacija da bi utvrdio da li je rezervacija sa zadatim parametrima moguća, a zatim odobrava ili odbija rezervaciju i svoju odluku registruje u sistemu.\\
-\textbf{Alternativni tok:} Nema.\\
+\textbf{Glavni tok:}
+\begin{enumerate}
+\item Korisnik unosi korisničko ime i lozinku
+\item Korisnik se prijavljuje na sistem
+\item Korisnik pregleda spisak dospelih zahteva za rezervaciju
+\item Korisnik za svaki od zahteva vrši pregled rezervacija da bi utvrdio da li je rezervacija sa zadatim parametrima moguća
+\item Korisnik odobrava ili odbija rezervaciju i svoju odluku registruje u sistemu.\\
+\end{enumerate}
+\textbf{Alternativni tok:}\\
+       2.1. Prijavljivanje nije uspešno, korisnik se preusmerava na poruku sa greškom.\\
 
 \subsubsection{\textbf{Use Case}: Uklanjanje registrovanih rezervacija}
 \textbf{Akter:} Šef smene/sale\\
@@ -344,8 +367,17 @@ Upravljanje ljudskim resursima je slučaj upotrebe u kojem se definišu raspored
 \textbf{Izlaz:} Nema.\\
 \textbf{Preduslovi:} Trenutni korisnik ima pravo da pristupi meniju za uklanjanje registrovanih rezervacija. Postoji validan razlog za uklanjanje rezervacije koji je iskomuniciran sa klijentom (sa čije god strane da je razlog potekao).\\
 \textbf{Postuslov:} Rezervacija sa datim rednim brojem je uklonjena iz sistema i razlog uklanjanja je registrovan.\\
-\textbf{Glavni tok:} Šef smene/sale unosi ulazne podatke, rezervacija se uklanja iz sistema i korisniku se prikazuju preostale rezervacije za dan uklonjene rezervacije.\\
-\textbf{Alternativni tok:} Rezervacija sa datim rednim brojem ne postoji u sistemu. Korisniku se prijavljuje greška i prikazuje se spisak poslednjih deset uklonjenih rezervacija.\\
+\textbf{Glavni tok:}
+\begin{enumerate}
+\item Korisnik unosi korisničko ime i lozinku
+\item Korisnik se prijavljuje na sistem
+\item Korisnik unosi ulazne podatke
+\item Rezervacija se uklanja iz sistema
+\item Korisniku se prikazuju preostale rezervacije za dan uklonjene rezervacije.\\
+\end{enumerate}
+\textbf{Alternativni tok:}\\
+       2.1. Prijavljivanje nije uspešno, korisnik se preusmerava na poruku sa greškom.\\
+	   4.1. Rezervacija sa datim rednim brojem ne postoji u sistemu. Korisniku se prijavljuje greška i prikazuje se spisak poslednjih deset uklonjenih rezervacija.\\
 
 \subsubsection{\textbf{Use Case}: Potvrda rezervacije klijentu}
 \textbf{Akter:} Šef smene/sale, potencijalni gost restorana.\\
@@ -353,8 +385,16 @@ Upravljanje ljudskim resursima je slučaj upotrebe u kojem se definišu raspored
 \textbf{Izlaz:} Rezervacija je potvrdjena ili ne.\\
 \textbf{Preduslovi:} Trenutni korisnik ima pravo da pristupi meniju za potvrdjivanje rezervacija, kontakt podaci potencijalnog gosta su validni.\\
 \textbf{Postuslov:} Rezervacija je potvrdjena.\\
-\textbf{Glavni tok:} Šef smene/sale pregleda odabranu rezervaciju, šalje potvrdu gostu automatski generisanom elektronskom poštom ili poziva gosta telefonom.\\
-\textbf{Alternativni tok:} Kontakt podaci nisu validni, rezervacija se automatski registruje kao uklonjena, sa razlogom "nevalidni kontakt podaci gosta".\\
+\textbf{Glavni tok:}
+\begin{enumerate}
+\item Korisnik unosi korisničko ime i lozinku
+\item Korisnik se prijavljuje na sistem
+\item Korisnik pregleda odabranu rezervaciju
+\item Korisnik šalje potvrdu gostu automatski generisanom elektronskom poštom ili poziva gosta telefonom.\\
+\end{enumerate}
+\textbf{Alternativni tok:}\\
+       2.1. Prijavljivanje nije uspešno, korisnik se preusmerava na poruku sa greškom.\\
+       4.1. Kontakt podaci nisu validni, rezervacija se automatski registruje kao uklonjena, sa razlogom "nevalidni kontakt podaci gosta".\\
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
