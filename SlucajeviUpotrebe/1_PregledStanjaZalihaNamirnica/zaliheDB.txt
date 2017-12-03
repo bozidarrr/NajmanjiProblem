@@ -1,0 +1,29 @@
+NAMIRNICE
+	- id_namirnice INT (primarni)
+	- naziv VARCHAR
+	- kolicina INT
+	- min_kolicina INT
+
+NABAVKA
+	- id_nabavke INT (primarni)
+	- id_korisnika INT 
+	- datum DATE
+	
+NABAVLjENA NAMIRNICA
+	- id_nabavljene_namirnice INT (primarni)
+	- id_nabavke INT
+	- id_namirnice INT
+	- kolicina INT
+	
+JELO
+	- id_jela INT (primarni)
+	- naziv VARCHAR
+	- ima_recept BOOLEAN
+	
+RECEPTI_JELA
+	- id_pozicije INT (primarni)
+	- id_jela INT
+	- id_namirnice INT
+	
+
+
