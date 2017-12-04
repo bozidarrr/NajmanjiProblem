@@ -1,0 +1,99 @@
+Kreiranje trebovanja:
+- Novi red u Nabavka
+- Za svaku stavku koja se trazi, dodaje se novi red u SpisakNabavkeInventara sa predmetom i kolicinom
+- Ako novi predmet nije postojao, dodaje se i novi red u Inventar, gde je default vrednost za kolicinu 0, a MinKolicina se postavlja rucno
+
+Pregled stanja inventara:
+- Pregled tabele inventar. Zahteva se primarni indeks na id koloni zbog joinova i na naziv radi lake pretrage po nazivu (nonclustered)
+- Druga varijanta, pregled view-a InventarNaIzmaku koji sadrzi samo one stavke koje su jako blizu ili ispod granice MinKolicina za funkcionisanje
+
+Unosenje proizvoda u sistem:
+- Unosenje novog reda u tabelu Inventar, sa Kolicinom jednakom nuli po default. Mora postojati dokaz o nabavci, tako da velicina veca od nule za pocetnu vrednost ne bi trebalo da ima smisla
+
+Pristizanje inventara
+- Pregleda se spisak Nabavka x SpisakNabavkeInventara, i poziva se stored procedura koja validira nabavku, unosi DatumPristizanja, povecava kolicinu za svaku pogodjenu stavku inventara
+
+--------------------------------------
+Kreiranje liste zaliha na minimumu
+- Pregled odgovarajuceg pogleda ZaliheNaIsteku koji odslikava to stanje
+
+Unos namirnica u sistem
+- Unos novog reda u tabelu Namirnice sa potrebnim podacima
+
+Kreiranje porudzbine
+- Dodavanje novog reda u tabelu nabavka i potrebnih redova u tabelu SpisakNabavkeNamirnice
+
+Pristizanje namirnica
+- Poziv odgovarajuce stored procedure koja upisuje datum zakljucenja nabavke, azuriranje tabele Zalihe namirnica sa rucnim unosenjem roka upotrebe unetih artikala
+
+Azuriranje jelovnika
+- Vrsi se automatski postavljanjem oznake omoguceno/onemoguceno od strane odgovarajuceg trigera nakon svakog uklanjanja namirnice sa stanja zaliha odnosno nakon unosa namirnica u sistem
+
+-------------------------------
+
+Obrada zahteva za odmor
+- U odovarajucem zahtevu za odmor se menja flag odobren
+- Aktivira se triger koji u rasporedu smena uklanja radnika iz rasporeda u periodu kada je na odmoru
+
+Zahtev za odmor
+- Vrsi se insert novog reda u tabelu ZahtevZaOdmor
+
+Raspored smena
+- Za dati datum se unosi po jedan red za svakog zaposlenog, za svaki kontinualni segment rada. Odgovarajucom stored procedurom se moze ponoviti raspored i za sledeci dan
+
+Pregled rasporeda smena
+- Vrsi se pregled tabele raspored smena, tako sto se za vrednosti koje nisu pokrivene nijednim unosom smatra da niko nije rasporedjen
+
+--------------------------------
+Kreira narudzbinu
+- Unosi se novi red za svaki sto koji je zahvacen narudzbinom i pravi se odgovarajuci spisak za narudzbinu
+
+Preuzima narudzbinu
+- Menja se status narudzbine
+
+Posluzuje jelo
+- Menja status narudzbine i registruje njen zavrsetak
+- Pri uklanjanju pribora sa stola, sto se markira kao slobodan
+
+Priprema jelo
+- Nakon sto je priprema gotova, menja se status narudzbine na odgovarajuci
+
+
+-------------------------------
+Narucivanje hrane
+- Kreiranje online narudzbine unosi novi red u OnlineNarudzbina. To dalje kreira narudzbinu kao i u prethodnom slucaju.
+
+Prihvatanje i pravljenje narudzbina
+- Isto kao za preuzimanje narudzbina, posto je tabela Naruzdbina ono sto kuhinja zapravo vidi
+
+Dostava
+- Menja se status narudzbine na odgovarajuci kada dostavljac potvrdi dostavu
+---------------------------
+
+Kreiranje rezervacija
+- Dodaje se novi red u tabelu rezervacija ukoliko je to moguce zbog ogranicenja
+
+Pregled rezervacija
+- Vrsi se pregled tabele za rezervacije
+
+Odobravanje rezervacija
+- Dodeljuje se NOT NULL vrednost za StoId
+
+Potvrda rezervacije
+- Menjaju se podaci ukoliko je potrebno. Ukoliko nema uspesne potvrde, rezervacija se brise iz sistema.
+
+-------------------------------
+Pregled finansija restorana za trazeni period
+- Podaci se dobijaju iz odgovarajuceg pogleda, koji objedinjuje podatke iz spiska odliva zbog nabavki (a preko SpiskaNabavkiNamirnica i SpiskaNabavkeInventara), materijalnih troskova (IsplataZaposlenima i EksterniTroskovi) kao i priliva na osnovu podataka povezanih sa narudzbinama
+
+Stampanje finansijskog izvestaja za trazeni period
+- Nema aktivnosti po bazi osim pregleda kao u prethodnoj stavki
+
+Pregled najcescih/najredjih narudzbina
+- Podaci se dobijaju iz odgovarajuceg pogleda, na osnovu podataka iz tabele Narudzbina i sa njom povezanih spiskova.
+
+
+
+
+
+
