@@ -487,55 +487,55 @@ Online naručivanje i dostava hrane i pića je slučaj upotrebe gde mušterija d
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \subsection {Obrada porudžbine gosta}
-%tek treba konvertovati u latex
+
 Porudžbina je niz slučajeva upotrebe u kojima se formalizuje komunikacija 3 učesnika - gosta, konobara i kuhinje, tokom života jedne porudžbine. Ova porudžbina može biti preko onlajn servisa, ili direktno preko konobara.
 
-Use case: Gost poručuje jelo
-Akteri: Gost kafane, konobar
-Ulaz: Jelovnik.
-Izlaz: Porudžbina.
-Preduslovi: Gost je u kafani.
-Postuslov: Uspešno je napravljen skup porudzbina gosta.
-Glavni tok: Gost potrazuje jelo sa menija, i konobar uspesno beleži narudžbinu
-Alternativni tok: Gost je nezadovoljan zbog dugog čekanja konobara
+\subsubsection{\textbf{Use Case}: Gost poručuje jelo}
+\textbf{Akteri:} Gost kafane, konobar
+\textbf{Ulaz:} Jelovnik.
+\textbf{Izlaz:} Porudžbina.
+\textbf{Preduslov:} Gost je u kafani.
+\textbf{Postuslov:} Uspešno je napravljen skup porudzbina gosta.
+\textbf{Glavni tok:} Gost potrazuje jelo sa menija, i konobar uspesno beleži narudžbinu
+\textbf{Alternativni tok:} Gost je nezadovoljan zbog dugog čekanja konobara
 
-Use case: Konobar prenosi porudžbinu kuhinji
-Akteri: konobar
-Ulaz: Jelovnik
-Izlaz: Osvežen globalni spisak porudžbina kojim se vodi rad kuhinje
-Preduslov: Konobar je preuzeo porudžbinu od gosta.
-Postuslov: Porudžbina je sačuvana na sigurnom mestu gde će biti preuzeta od strane kuhinje.
-Glavni tok: Konobar dodaje porudžbinu na listu porudžbina
-Alternativni tok: Konobar ne uspeva da doda porudžbinu usred tehničkih problema sistema, pa lično prenosi porudžbinu kuhinji.
+\subsubsection{\textbf{Use Case:} Konobar prenosi porudžbinu kuhinji}
+\textbf{Akteri:} Konobar
+\textbf{Ulaz:} Jelovnik
+\textbf{Izlaz:} Osvežen globalni spisak porudžbina kojim se vodi rad kuhinje
+\textbf{Preduslov:} Konobar je preuzeo porudžbinu od gosta.
+\textbf{Postuslov:} Porudžbina je sačuvana na sigurnom mestu gde će biti preuzeta od strane kuhinje.
+\textbf{Glavni tok:} Konobar dodaje porudžbinu na listu porudžbina
+\textbf{Alternativni tok:} Konobar ne uspeva da doda porudžbinu usred tehničkih problema sistema, pa lično prenosi porudžbinu kuhinji.
 
-Use case: Kuhinja obradjuje porudžbinu
-Akter: Kuhinja (kuvar)
-Ulaz: Porudžbina sa globalne liste porudžbina
-Izlaz: Pripremljeno jelo sa porudžbine.
-Preduslov: Postoji bar jedna porudžbina na listi
-Postuslov: Pripremljena sva jela sa odabrane porudžbine
-Glavni tok: Kuhinja bira najstariju porudžbinu (onu koja je najduže čekala da bude obradjena), i priprema jela sa porudžbine. Nakon pripreme jela, kuhinja kontaktira konobara da preuzme jelo, i odnese ga gostu.
-Alternativni tok: Nema svih sastojaka potrebnih za pripremu jela.
-Alternativni tok 2: Bolestan konobar čiji je specijalitet traženo jelo.
+\subsubsection{\textbf{Use Case:} Kuhinja obradjuje porudžbinu}
+\textbf{Akteri:} Kuhinja (kuvar)
+\textbf{Ulaz:} Porudžbina sa globalne liste porudžbina
+\textbf{Izlaz:} Pripremljeno jelo sa porudžbine.
+\textbf{Preduslov:} Postoji bar jedna porudžbina na listi
+\textbf{Postuslov:} Pripremljena sva jela sa odabrane porudžbine
+\textbf{Glavni tok:} Kuhinja bira najstariju porudžbinu (onu koja je najduže čekala da bude obradjena), i priprema jela sa porudžbine. Nakon pripreme jela, kuhinja kontaktira konobara da preuzme jelo, i odnese ga gostu.
+\textbf{Alternativni tok:} Nema svih sastojaka potrebnih za pripremu jela.
+\textbf{Alternativni tok 2:} Konobar čiji je specijalitet traženo jelo odsustvuje sa posla.
 
-Use case: Isporuka jela
-Akteri: Konobar, gost
-Ulaz: Gotovo jelo koje je konobar preuzeo iz kuhinje
-Izlaz: Servirano jelo na stolu gosta kafane.
-Preduslov: Kuhinja pripremila jelo
-Postuslov: Gost jede jelo.
-Glavni tok: Kuhinja obaveštava konobara da su sva jela sa odredjene narudžbine pripremljena. Konobar preuzima jelo, i odnosi ga do gosta čija narudžbina je obradjena.
-Alternativni tok: Konobar se sapleo prilikom donošenja jela.
 
-Use case: Online narudžbina
-Akter: Posetilac sajta
-Ulaz: Online ponuda jela
-Izlaz: Online porudžbina
-Preduslovi: Posetilac sajta ima stabilnu internet konekciju.
-Postuslovi: Porudžbina je upisana u globalni spisak porudžbina kojim se vodi rad kuhinje
-Glavni tok: Klijent posećuje sajt, i bira jelo koje želi da naruči.
-Alternativni tok: Porudžbina nije prihvaćena (usled gužve u kuhinji, problema sa konekcijom sa klijentom ili nekog drugog razloga)
-%tek treba konvertovati u latex
+\subsubsection{\textbf{Use Case:} Isporuka jela}
+\textbf{Akteri:} Konobar, gost
+\textbf{Ulaz:} Gotovo jelo koje je konobar preuzeo iz kuhinje
+\textbf{Izlaz:} Servirano jelo na stolu gosta kafane.
+\textbf{Preduslov:} Kuhinja pripremila jelo
+\textbf{Postuslov:} Gost jede jelo.
+\textbf{Glavni tok:} Kuhinja obaveštava konobara da su sva jela sa odredjene narudžbine pripremljena. Konobar preuzima jelo, i odnosi ga do gosta čija narudžbina je obradjena.
+\textbf{Alternativni tok:} Konobar se sapleo prilikom donošenja jela.
+
+\subsubsection{\textbf{Use Case:} Online narudžbina}
+\textbf{Akteri:} Posetilac sajta
+\textbf{Ulaz:} Online ponuda jela
+\textbf{Izlaz:} Online porudžbina
+\textbf{Preduslov:} Posetilac sajta ima stabilnu internet konekciju.
+\textbf{Postuslov:} Porudžbina je upisana u globalni spisak porudžbina kojim se vodi rad kuhinje
+\textbf{Glavni tok:} Klijent posećuje sajt, i bira jelo koje želi da naruči.
+\textbf{Alternativni tok:} Porudžbina nije prihvaćena (usled gužve u kuhinji, problema sa konekcijom sa klijentom ili nekog drugog razloga)
 
 \includegraphics[width=\textwidth]{SU_7_konobar_kuhinja.png}
 \includegraphics[width=\textwidth]{SU_7_porudzbina.png}
