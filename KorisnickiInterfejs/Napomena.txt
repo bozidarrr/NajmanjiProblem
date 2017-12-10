@@ -1,0 +1,3 @@
+- Svaki pdf odgovara jednom slucaju upotrebe
+- U direktorijumu svakog slucaja upotrebe postoji direktorijum "KorisnickiInterfejs" koji sadrzi .png fajlove.
+- .png fajlovi su zapravo "iscepkani" pdf i mogu se koristiti za dodavanje u glavni dokument projekta
