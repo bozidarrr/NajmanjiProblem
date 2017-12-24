@@ -1,0 +1,28 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{graphicx}
+\usepackage{enumerate}
+\begin{document}
+\section{Arhitektura informacionog sistema ugostiteljskog objekta}
+Najmanji Problem je implementiran kao veb aplikacija. Aplikacija se sastoji od početne strane, sa mogućnošću prijavljivanja, kao i odvojene privilegije pristupa podacima od strane mušterije i zaposlenog. Zaposleni nakon autentifikacije dobija pristup stranicama koje se tiču jelovnika, inventara, namirnica i porudžbina. Mušterija može bez autentifikacije pristupiti aplikaciji, međutim za kreiranje rezervacije i porudžbine je neophodno da unese mejl adresu ili kontakt telefon.\\
+
+Za izradu aplikacije korišćen je PHP razvojni okvir Laravel. Laravel je noviji MVC razvojni okvir za čije korišćenje je neophodan je Composer. Composer je alat za upravljanje zavisnim paketima u aplikacijama napisanim u PHP-u. Instalacija Composer-a podrazumeva preuzimanje datoteka određenog paketa i dodavanje istih samoj aplikaciji.\\
+
+MVC deli sve što aplikacija sadrži na tri dela:
+\begin{itemize}
+	\item \textbf{Model} sadrži opis podataka i operacija nad njima. To je skup klasa koje opisuju sve entitete iz informacionog sistema. Primer modela su klase Order.php i OrderProduct.php. Prva opisuje porudžbine u aplikaciji, a druga elemente porudžbine.
+	\item \textbf{View} ili pogled prikazuje podatke iz modela u formatu pogodnom za interakciju kao komponentu korisničkog interfejsa. Za svaki slučaj upotrebe kreiran je jedan view. U ovom delu su korišćeni HTML, CSS i JavaScript. Primer pogleda može biti stranica svih novih/neobrađenih online porudžbina.
+	\item \textbf{Controller} obavlja komunikaciju između pogleda i modela, u zavisnosti od koirsnikovog unosa. Sadrži pripremu podataka za pogled, proračune, kao i njihovu pripremu pre slanja na obradu modelu. Primer kontrolera je OrderController.php koji sadrži metod za pripremu podataka koji su neophodni za prikazivanje stranice sa neobrađenih porudžbinama.
+\end{itemize}
+
+Za svaku klasu iz modela, kreirana je odgovarajuća tabela u bazi koju on opisuje. Sloj podataka je implementiran tako što je korišćen MySQL, verzija 5.7.19. Neke tabele su kreirane korišćenjem phpMyAdmin alata (verzija 4.7.4), međutim uglavnom su korišćene prednosti Laravela, pa su kreirane pomoću artisana. Artisan kreira PHP skripte (migraciju) za kreiranje i brisanje jedne tabele baze podataka za dati model. phpMyAdmin i MySQL su korišćeni u okviru softverskog paketa WAMP, verzija 3.1.0.\\
+
+Laravel brine o konekciji na bazu, nisu potrebna dodatna podešavanja i ekstenzije, dovoljno je samo u konfiguracionom fajlu database.php upisati neophodne paramatre. \\
+
+Pored navedenih tehnologija koje su korišćene u svrhu kreiranja veb aplikacije, za opis informaciong sistema korišćeni su i:
+\begin{itemize}
+	\item Visual Paradigm, verzija 14.2 - opis slučajeva upotrebe, dijagrami aktivnosti, dijagram baze podataka
+	\item Balsamiq Mockups, verzija 3 - korisnički interfejs
+\end{itemize}
+\end{document}
