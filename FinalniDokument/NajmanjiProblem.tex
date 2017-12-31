@@ -98,7 +98,7 @@ Problematika realnog sistema na kojem treba da počiva ovaj informacioni sistem 
 Krajnji rezultat ovog projekta jeste funkcionalni prototip informacionog sistema. (\href{https://raw.githubusercontent.com/bozidarrr/NajmanjiProblem/master/FinalniDokument/SU_0_grupni.png}{Slika visoke rezolucije}):\\
 
 \includegraphics[width=\textwidth]{SU_0_grupni.png}
-
+\pagebreak
 \section{Slučajevi upotrebe}
 Slučaj upotrebe (Use case, engl.) je specifikacija skupa akcija koje vrši sistem, koje proizvode vidljiv rezultat koji je, po pravilu, od vrednosti za jednog ili više učesnika u sistemu. Koristi se da precizira ponašanje sistema, bez otkrivanja njegove unutrašnje strukture.
 
@@ -477,7 +477,7 @@ Gostu čija je rezervacija odobrena, potvrđuje se prijem i prihvatanje rezervac
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \subsection{Online naručivanje i dostava hrane i pića}
-Online naručivanje i dostava hrane i pića je slučaj upotrebe gde mušterija definiše svoju narudžbinu, radnici je prave, a dostavljači isporučuju. U naručivaju učestvuju: mušterija, radnik i dostavljač.
+Online naručivanje i dostava hrane i pića je slučaj upotrebe gde mušterija definiše svoju narudžbinu, radnici je prave, a dostavljači isporučuju. U naručivaju učestvuju: mušterija, radnik i dostavljač.\\\\
 \\
 \includegraphics[width=\linewidth]{SU_6_dostava.png}
 
@@ -579,165 +579,141 @@ Konobar preuzima gotova jela iz kuhinje nakon signala dobijenog posredstvom info
 
   \includegraphics[width=\textwidth]{SU_7_konobar_kuhinja.png}
   \includegraphics[width=\textwidth]{SU_7_porudzbina.png}
-
+\pagebreak
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \section{Baza podataka}
-Pregled šeme baze podataka (\href{https://raw.githubusercontent.com/bozidarrr/NajmanjiProblem/master/FinalniDokument/NajmanjiProblem_BazaPodataka.png}{Slika visoke rezolucije}):\\
+\subsection{Pregled šeme baze podataka}
+Na sledećoj slici može se videti šema baze podataka koja je deo implementacije informacionog sistema (\href{https://raw.githubusercontent.com/bozidarrr/NajmanjiProblem/master/FinalniDokument/NajmanjiProblem_BazaPodataka.png}{Slika visoke rezolucije}):\\
 \vspace{1mm}
  \includegraphics[width=\textwidth]{NajmanjiProblem_BazaPodataka.png}
  
-\textbf{Kreiranje trebovanja} :
+\subsection{Opis operacija nad bazom prema slučajevima upotrebe}
+\subsubsection{Kreiranje porudžbine kada su zalihe na minimumu}
 \begin{itemize}
-\item Novi red u \emph{Nabavka}
-\item Za svaku stavku koja se traži, dodaje se novi red u \emph{SpisakNabavkeInventara} sa predmetom i količnom
-\item Ako novi predmet nije postojao, dodaje se i novi red u \emph{Inventar}, gde je default vrednost za \emph{Kolicinu} 0, a \emph{MinKolicina} se postavlja rucno
+\item Pregled odgovarajućeg pogleda \emph{ZaliheNaIsteku}.
+\item Dodavanje novog reda u \emph{Nabavka}.
+\item Za svaku stavku koja se traži, dodaje se novi red u \emph{SpisakNabavkeInventara} sa predmetom i količinom.
+\item Ako novi predmet nije postojao, dodaje se i novi red u \emph{Inventar}, gde je podrazumevana vrednost za \emph{Kolicina} 0, a \emph{MinKolicina} se postavlja ručno.
 \end{itemize}
 
-
-\textbf{Pregled stanja inventara} :
+\subsubsection{Pristizanje namirnica i osvežavanje stanja namirnica u sistemu}
 \begin{itemize}
-\item Pregled tabele \emph{Inventar}. Zahteva se primarni indeks na id koloni zbog joinova i na naziv radi lake pretrage po nazivu (nonclustered)
-\item Druga varijanta, pregled view-a \emph{InventarNaIzmaku} koji sadrži samo one stavke koje su jako blizu ili ispod granice \emph{MinKolicina} za funkcionisanje
+\item Poziv odgovarajuće stored procedure koja upisuje datum zaključenja nabavke, ažuriranje tabele \emph{Zalihe} namirnica sa ručnim unošenjem roka upotrebe unetih artikala.
+\item Unos novog reda u tabelu \emph{Namirnice} sa potrebnim podacima.
 \end{itemize}
 
-\textbf{Unošnje proizvoda u sistem:}
+\subsubsection{Ažuriranje jelovnika}
 \begin{itemize}
-\item Unošenje novog reda u tabelu \emph{Inventar}, sa količinom jednakom nuli po default. Mora postojati dokaz o nabavci, tako da veličina veca od nule za početnu vrednost ne bi trebalo da ima smisla
+\item Vrši se automatski postavljanjem oznake omogućeno/onemogćeno od strane odgovarajućeg trigera nakon svakog uklanjanja namirnice sa stanja zaliha odnosno nakon unosa namirnica u sistem.
 \end{itemize}
 
-\textbf{Pristizanje inventara}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\subsubsection{Pristizanje poručenih aparata/predmeta i osvežavanje stanja sistema}
 \begin{itemize}
 \item Pregleda se spisak \emph{Nabavka x SpisakNabavkeInventara}, i poziva se stored procedura koja validira nabavku, unosi \emph{DatumPristizanja}, povećava količinu za svaku pogođenu stavku inventara 
+\item Unošenje novog reda u tabelu \emph{Inventar}, sa količinom jednakom nuli kao podrazumevano. Mora postojati dokaz o nabavci, tako da veličina veca od nule za početnu vrednost ne bi trebalo da ima smisla
 \end{itemize}
 
-\textbf{Kreiranje liste zaliha na minimumu}
+\textbf{Pregled stanja inventara i kreiranje porudžbine ako je potrebna} :
 \begin{itemize}
-\item Pregled odgovarajućeg pogleda \emph{ZaliheNaIsteku} koji oslikava to stanje 
+\item Pregled tabele \emph{Inventar}. Zahteva se primarni indeks na id koloni zbog joinova i na naziv radi lake pretrage po nazivu (nonclustered).
+\item Druga varijanta, pregled view-a \emph{InventarNaIzmaku} koji sadrži samo one stavke koje su jako blizu ili ispod granice \emph{MinKolicina} za funkcionisanje.
+\item Kreiranje novog reda u tabeli \emph{Nabavka}.
 \end{itemize}
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\textbf{Unos namirnica u sistem}
+\subsubsection{Pregled finansijskog izveštaja restorana za traženi period}
 \begin{itemize}
-\item Unos novog reda u tabelu \emph{Namirnice} sa potrebnim podacima 
+\item  Podaci se dobijaju iz odgovarajućeg pogleda, koji objedinjuje podatke iz spiska odliva zbog nabavki (a preko \emph{SpiskaNabavkiNamirnica} i \emph{SpiskaNabavkeInventara} ), materijalnih troskova (\emph{IsplataZaposlenima} i \emph{EksterniTroskovi}) kao i priliva na osnovu podataka povezanih sa narudžbinama. 
 \end{itemize}
 
-\textbf{Kreiranje porudžbine}
+\subsubsection{Pregled najčešćih/najređih narudžbina za traženi period}
 \begin{itemize}
-\item Dodavanje novog reda u tabelu \emph{Nabavka} i potrebnih redova u tabelu \emph{SpisakNabavkeNamirnice}
+\item Podaci se dobijaju iz odgovarajućeg pogleda, na osnovu podataka iz tabele \emph{Narudžbina} i sa njom povezanih spiskova.
 \end{itemize}
 
-\textbf{Pristizanje namirnica}
-\begin{itemize}
-\item Poziv odgovarajuće stored procedure koja upisuje datum zaključenja nabavke, ažuriranje tabele \textbf{Zalihe} namirnica sa ručnim unošenjem roka upotrebe unetih artikala 
-\end{itemize}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\textbf{Ažuriranje jelovnika}
-\begin{itemize}
-\item Vrši se automatski postavljanjem oznake omogućeno/onemogćeno od strane odgovarajućeg trigera nakon svakog uklanjanja namirnice sa stanja zaliha odnosno nakon unosa namirnica u sistem
-\end{itemize}
-
-
--------------------------------
-
-\textbf{Obrada zahteva za odmor}
-\begin{itemize}
-\item U odgovarajućem zahtevu za odmor se menja flag odobren
-\item Aktivira se triger koji u rasporedu smena uklanja radnika iz rasporeda u periodu kada je na odmoru
-\end{itemize}
-
-\textbf{Zahtev za odmor}
+\subsubsection{Pravljenje zahteva za odmor}
 \begin{itemize}
 \item Vrši se insert novog reda u tabelu \emph{ZahtevZaOdmor} 
 \end{itemize}
 
-\textbf{Raspored smena}
-\begin{itemize}
-\item Za dati datum se unosi po jedan red za svakog zaposlenog, za svaki kontinualni segment rada. Odgovarajućom stored procedurom se može ponoviti raspored i za sledeći dan
-\end{itemize}
-
-\textbf{Pregled rasporeda smena}
+\subsubsection{Pregled rasporeda smena}
 \begin{itemize}
 \item Vrši se pregled tabele raspored smena, tako što se za vrednosti koje nisu pokrivene nijednim unosom smatra da niko nije raspoređen
 \end{itemize}
 
-
-\textbf{Kreira narudžbinu}
+\subsubsection{Obrada zahteva za odmor}
 \begin{itemize}
-\item Unosi se novi red za svaki sto koji je zahvaćen narudžbinom i pravi se odgovarajući spisak za narudžbinu
+\item U odgovarajućem zahtevu za odmor se menja flag odobren.
+\item Aktivira se triger koji u rasporedu smena uklanja zaposlenog iz rasporeda u periodu kada je na odmoru.
 \end{itemize}
 
-
-\textbf{Preuzima narudžbinu}
+\subsubsection{Pravljenje rasporeda smena}
 \begin{itemize}
-\item Menja se status narudžbine 
+\item Za dati datum se unosi po jedan red za svakog zaposlenog, za svaki kontinualni segment rada. Odgovarajućom stored procedurom se može ponoviti raspored i za sledeći dan.
 \end{itemize}
 
-\textbf{Poslužuje jelo}
-\begin{itemize}
-\item Menja status narudžbine i registruje njen završetak
-\item Pri uklanjanju pribora sa stola, sto se markira kao slobodan
-\end{itemize}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-
-\textbf{Priprema jela}
-\begin{itemize}
-\item Nakon što je priprema gotova, menja se status narudžbine na odgovarajući način
-\end{itemize}
-
-
-\textbf{Naručivanje hrane}
-\begin{itemize}
-\item Kreiranje online narudžbine unosi novi red u \emph{OnlineNarudzbina}. To dalje kreira narudžbinu kao i u prethodnom slučaju.
-\end{itemize}
-
-\textbf{Prihvatanje i pravljenje narudžbina}
-\begin{itemize}
-\item Isto kao za preuzimanje narudžbina, pošto je tabela \emph{Naruzdbina} ono sto kuhinja zapravo vidi
-\end{itemize}
-
-
-\textbf{Dostava}
-\begin{itemize}
-\item Menja se status narudzbine na odgovarajući kada dostavljač potvrdi dostavu
-\end{itemize}
-
-\textbf{Kreiranje rezervacija}
+\subsubsection{Kreiranje rezervacija}
 \begin{itemize}
 \item  Dodaje se novi red u tabelu rezervacija ukoliko je to moguće zbog ograničenja 
 \end{itemize}
 
 
-\textbf{Pregled rezervacija}
+\subsubsection{Pregled rezervacija}
 \begin{itemize}
 \item Vrši se pregled tabele za rezervacije 
 \end{itemize}
 
 
-\textbf{Odobravanje rezervacija}
+\subsubsection{Odobravanje rezervacija}
 \begin{itemize}
 \item Dodeljuje se NOT NULL vrednost za StoId 
 \end{itemize}
 
-\textbf{Potvrda rezervacije}
+\subsubsection{Potvrda rezervacije}
 \begin{itemize}
 \item Menjaju se podaci ukoliko je potrebno. Ukoliko nema uspešne potvrde, rezervacija se briše iz sistema.
 \end{itemize}
 
-\textbf{Pregled finansija restorana za traženi period}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\subsubsection{Naručivanje hrane}
 \begin{itemize}
-\item  Podaci se dobijaju iz odgovarajućeg pogleda, koji objedinjuje podatke iz spiska odliva zbog nabavki (a preko \emph{SpiskaNabavkiNamirnica} i \emph{SpiskaNabavkeInventara} ), materijalnih troskova (\emph{IsplataZaposlenima} i \emph{EksterniTroskovi}) kao i priliva na osnovu podataka povezanih sa narudžbinama 
+\item Kreiranje online narudžbine unosi novi red u \emph{OnlineNarudzbina}. To dalje kreira narudžbinu kao i u prethodnom slučaju.
 \end{itemize}
 
-\textbf{Štampanje finansijskog izvestaja za trazeni period}
+\subsubsection{Prihvatanje i pravljenje narudžbina}
 \begin{itemize}
-\item Nema aktivnosti po bazi osim pregleda kao u prethodnoj stavci 
+\item Isto kao za preuzimanje narudžbina, pošto je tabela \emph{Naruzdbina} ono sto kuhinja zapravo vidi
 \end{itemize}
 
-\textbf{Pregled najčešćih/najređih narudžbina}
+
+\subsubsection{Dostava}
 \begin{itemize}
-\item Podaci se dobijaju iz odgovarajućeg pogleda, na osnovu podataka iz tabele \emph{Narudžbina} i sa njom povezanih spiskova.
+\item Menja se status narudzbine na odgovarajući kada dostavljač potvrdi dostavu
+\end{itemize}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\subsubsection{Gost poručuje jelo}
+\begin{itemize}
+\item Unosi se novi red za svaki sto koji je zahvaćen narudžbinom i pravi se odgovarajući spisak za narudžbinu
+\item Nakon što je priprema gotova, menja se status narudžbine na odgovarajući način
+\end{itemize}
+
+\subsubsection{Konobar isporučuje jelo}
+\begin{itemize}
+\item Menja se status narudžbine 
+\item Menja status narudžbine i registruje njen završetak
+\item Pri uklanjanju pribora sa stola, sto se markira kao slobodan
 \end{itemize}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -753,8 +729,6 @@ Na stranici za prijavljivanje na sistem korisnik treba da unese korisničko ime 
     width=\textwidth,
     height=\textheight,
     keepaspectratio]{0_PrijavljivanjeNaSistem.pdf}
-
-
 
 \subsubsection{Pregled stanja zaliha namirnica}
 Na panelu za \emph{Namirnice} korisnik može da generiše spisak namirnica potrebnih za nabavku i da ih odmah i naruči. Može da vrši preragu po namirnicama, a može i da kreira novu namirnicu. Na panelu \emph{Jelovnik} moguće akcije su ažuriranje postojećeg jelovnika, pretraga i kreiranje novog jelovnika.\\
@@ -818,7 +792,6 @@ Na panelu \emph{Inventar} korisnik može da zahteva listu predmeta potrebnih za 
     width=\textwidth,
     height=\textheight,
     keepaspectratio]{2_PregledInventara.pdf}
-
 
 \includegraphics[
 	page = 2,
@@ -1019,11 +992,17 @@ Korisnik odabirom obroka, u panelu \emph{Jelovnik}, i ostavljanjem odgovarajući
     width=\textwidth,
     height=\textheight,
     keepaspectratio]{6_OnlineNarucivanjeIDostava_Gost.pdf}
-
+\pagebreak
 \section{Arhitektura, alati i tehnologije}
 
-
 Najmanji Problem je implementiran kao veb aplikacija. Aplikacija se sastoji od početne strane, sa mogućnošću prijavljivanja, kao i odvojene privilegije pristupa podacima od strane mušterije i zaposlenog. Zaposleni nakon autentifikacije dobija pristup stranicama koje se tiču jelovnika, inventara, namirnica i porudžbina. Mušterija može bez autentifikacije pristupiti aplikaciji, međutim za kreiranje rezervacije i porudžbine je neophodno da unese mejl adresu ili kontakt telefon.\\
+
+\includegraphics[
+page = 1,
+width=\textwidth,
+height=\textheight,
+keepaspectratio]
+{arhitektura.png}\\
 
 Za izradu aplikacije korišćen je PHP razvojni okvir Laravel. Laravel je noviji MVC razvojni okvir za čije korišćenje je neophodan je Composer. Composer je alat za upravljanje zavisnim paketima u aplikacijama napisanim u PHP-u. Instalacija Composer-a podrazumeva preuzimanje datoteka određenog paketa i dodavanje istih samoj aplikaciji.\\
 
@@ -1043,7 +1022,4 @@ Pored navedenih tehnologija koje su korišćene u svrhu kreiranja veb aplikacije
 	\item Visual Paradigm, verzija 14.2 - opis slučajeva upotrebe, dijagrami aktivnosti, dijagram baze podataka
 	\item Balsamiq Mockups, verzija 3 - korisnički interfejs
 \end{itemize}
-%% 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
 \end{document}
