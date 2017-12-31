@@ -1,0 +1,14 @@
+Repozitorijum aplikacije se nalazi na:
+https://github.com/sanelanumanovic/pveb_projekat/
+
+Aplikacija je raðena u Laravel okruženju i za njen pregled/testiranje, neophodno je ispratiti sledeæe korake:
+
+1. Podrazumeva se postojanje wamp-a, lamp-a ili mySQL + apache servera
+2. Kreirati lokalno bazu podataka pod nazivom "restoran" 
+3. Instalirati composer (https://getcomposer.org/) po uputstvu sa stranice https://laravel.com/docs/4.2
+4. Iskopirati lokalno projekat
+5. Promeniti/prilagoditi parametre za mySQL konekciju u pveb_projekat/app/config/database.php
+6. Kreirati neophodne tabele pokretanjem komande "php artisan migrate" iz terminala ili command prompt-a, a u direktorijumu projekta
+7. Pokrenuti skripte za popunjavanje tabela komandom "php artisan db:seed"
+8. Pokrenuti aplikaciju
+9. Prijaviti se sa korisnièkim imenom "zaposleni" i lozinkom "zaposleni"
