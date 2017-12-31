@@ -69,7 +69,7 @@ Rad je izrađen kao grupni studentski projekat na Matematičkom fakultetu, na st
 
 \subsection{Metodologija rada}
 
-Celina sistema, kao i uočene grupe poslova unutar istog, analizirani su dijagramima slučajeva upotrebe. Pojedine uočene celine detaljnije su modelirane BPMN (Business Process Modelling Notation) dijagramima. Za izdradu baze podataka upotrebljen je ER dijagram.
+Celina sistema, kao i uočene grupe poslova unutar istog, analizirani su dijagramima slučajeva upotrebe. Pojedine uočene celine detaljnije su modelirane BPMN (Business Process Modelling Notation) dijagramima. Za izradu baze podataka upotrebljen je ER dijagram.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -78,7 +78,7 @@ Celina sistema, kao i uočene grupe poslova unutar istog, analizirani su dijagra
 Moderni ugostiteljski objekti postaju sve više zavisni od informacionih tehnologija u svakodnevnom radu, dok su sa druge strane čvrsto vezani i za zastarele oblike komunikacije i rada ukorenjene u lokalnim običajima, čineći specifičnu
 mešavinu dva sveta.\\
 
-Vođenje ugostiteljskih objekata uključuje niz aktivnosti, čije izvršavanje može biti olakšano, ubrzano i učinjeno transparentnom implementacijom digitalnog informacionog sistema, koji bi obezbeđivao sledeće funkcionalnosti:\\
+Vođenje ugostiteljskih objekata uključuje niz aktivnosti, čije izvršavanje može biti olakšano, ubrzano i učinjeno transparentnim, implementacijom digitalnog informacionog sistema, koji bi obezbeđivao sledeće funkcionalnosti:\\
 
 \begin{itemize}
 \item Pregled stanja zaliha namirnica i druge potrošne robe u realnom vremenu
@@ -90,7 +90,7 @@ Vođenje ugostiteljskih objekata uključuje niz aktivnosti, čije izvršavanje m
 \item Pregled stanja trenutno aktivnih narudžbina (fizičkih i online), i razmena informacija između konobara i kuhinje
 \end{itemize}
 
-Neki od podsistema su otvoreni, a neki zatvoreni, tako da postoji mogućnost demonstracije različitih tehnika razvoja
+Neki od podsistema su otvoreni, a neki zatvoreni, tako da je bila potrebna demonstracija različitih tehnika razvoja
 informacionih podsistema.\\
 
 Problematika realnog sistema na kojem treba da počiva ovaj informacioni sistem je svima poznata u dovoljnoj meri, da je moguće izvršiti inicijalno planiranje u grubim crtama, dok je za detaljniji plan neophodno terensko istraživanje.\\
@@ -100,13 +100,12 @@ Krajnji rezultat ovog projekta jeste funkcionalni prototip informacionog sistema
 \includegraphics[width=\textwidth]{SU_0_grupni.png}
 
 \section{Slučajevi upotrebe}
-
 Slučaj upotrebe (Use case, engl.) je specifikacija skupa akcija koje vrši sistem, koje proizvode vidljiv rezultat koji je, po pravilu, od vrednosti za jednog ili više učesnika u sistemu. Koristi se da precizira ponašanje sistema, bez otkrivanja njegove unutrašnje strukture.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \subsection{Pregled stanja zaliha namirnica}
-Pregled stanja zaliha namirnica je slučaj upotrebe u kome se formalizuje način na koji ugostiteljski objekat planira nabavku namirnica, nabavlja, a potom ih dodaje na stanje. U tom procesu učestvuju menadžer nabavke (zaposleni) i dobavljač. 
+Pregled stanja zaliha namirnica je slučaj upotrebe u kojem se formalizuje način na koji ugostiteljski objekat planira nabavku namirnica, nabavlja, a potom ih dodaje na stanje. U tom procesu učestvuju menadžer nabavke (zaposleni) i dobavljač. 
 
 \begin{itemize}
 \item Zaposleni kreira spisak namirnica čija je trenutna količina ispod propisane minimalne. Na osnovu tog spiska, kreira porudžbinu. Kasnije, nakon isporuke porudžbine, unosi u bazu pristiglu robu.
@@ -116,66 +115,66 @@ Pregled stanja zaliha namirnica je slučaj upotrebe u kome se formalizuje način
 
 \subsubsection{Kreiranje porudžbine kada su zalihe na minimumu}
 Informacioni sistem omogućava lako kreiranje narudžbine za one namirnice čija dostupna količina je ispod definisanog minimuma neophodnog za pravilno funkcionisanje objekta.\\\\
-\textbf{Akter:} Radnik(menadžer nabavke)\\
+\textbf{Akter:} Zaposleni\\
 \textbf{Ulaz:} Lista namirnica čije su zalihe na minimumu.\\
 \textbf{Izlaz:} Kreiran je i poručen spisak namirnica čije su zalihe na minimumu.\\
-\textbf{Preduslovi:} Radnik se uspešno prijavio na glavni sistem gde se nalaze informacije o namirnicama.\\
+\textbf{Preduslovi:} Zaposleni se uspešno prijavio na glavni sistem gde se nalaze informacije o namirnicama.\\
 \textbf{Postuslov:} Uspešno su poručene namirnice čija je količina manja od poželjne.\\
 \textbf{Glavni tok:} 
 \begin{enumerate}
-	\item Radnik zahteva od sistema spisak namirnica za koje važi da je trenutna količina manja od minimalne propisane.
+	\item Zaposleni zahteva od sistema spisak namirnica za koje važi da je trenutna količina manja od minimalne propisane.
 	\item Sistem generiše listu namirnica koje zadovoljavaju prethodno navedeni uslov.
-	\item Radnik za svaku namirnicu procenjuje količinu za nabavku. 
-	\item Radnik na spisak može dodati i namirnice kojih nema i nikada ih nije bilo u sistemu. 
-	\item Radnik kreira porudžbinu.
+	\item Zaposleni za svaku namirnicu procenjuje količinu za nabavku. 
+	\item Zaposleni na spisak može dodati i namirnice kojih nema i nikada ih nije bilo u sistemu. 
+	\item Zaposleni kreira porudžbinu.
 \end{enumerate}
 \textbf{Alternativni tokovi:} \\
 \begin{itemize}
-\item[1.1] Sistem ne može da generiše izveštaj ukoliko ne postoji proizvod sa minimalnom količinom, radnik prekida rad.
-\item[2.1] Sistem nema spisak namirnica na minimalnim zalihama, tačnije spisak je prazan, procena se ne vrši, radnik završava rad.
+\item[1.1] Sistem ne može da generiše izveštaj ukoliko ne postoji proizvod sa minimalnom količinom, zaposleni prekida rad.
+\item[2.1] Sistem nema spisak namirnica na minimalnim zalihama, tačnije spisak je prazan, procena se ne vrši, zaposleni završava rad.
 \end{itemize}
 
 \subsubsection{Pristizanje namirnica i osvežavanje stanja namirnica u sistemu}
 Nove namirnice koje su isporučene restoranu, neophodno je uneti u informacioni sistem, da bi ostale komponente sistema bile svesne njihovog postojanja.\\\\
-\textbf{Akter:} Dobavljač, radnik\\
+\textbf{Akter:} Dobavljač, zaposleni\\
 \textbf{Ulaz:} Spisak namirnica koje je dobavljač isporučio.\\
 \textbf{Izlaz:} Ažurirana je lista namirnica.\\
-\textbf{Preduslovi:} Dobavljač je dostavio poručene namirnice. Radnik se uspešno prijavio na sistem. \\
+\textbf{Preduslovi:} Dobavljač je dostavio poručene namirnice. Zaposleni se uspešno prijavio na sistem. \\
 \textbf{Postuslov:} Namirnice su isporučene kupcu i kreirana je lista dostavljenih proizvoda (Ažurirane su količine namirnica i eventualno su unete nove namirnice).\\
 \textbf{Glavni tok:} 
 \begin{enumerate}
 	\item Dobavljač je primio porudžbinu.
-	\item Dobavljač procenjuje da li je njegva firma u mogućnosti da odgovori na zahteve ugostiteljskog objekta.
+	\item Dobavljač procenjuje da li je njegova firma u mogućnosti da odgovori na zahteve ugostiteljskog objekta.
 	\item Dobavljač odlučuje za svaku namirnicu da li će isporučiti u smanjenoj ili traženoj količini.
 	\item Dobavljač isporučuje robu ugostiteljskom objektu.
 	\item Dobavljač pri isporuci dostavlja listu namirnica koje su isporučene.
-    \item Radnik preuzima i potvrđuje listu isporučenih namirnica.
-	\item Radnik za svaki od proizvoda sa liste ažurira proizvod u sistemu tako što dodaje pristiglu količinu.
-	\item Radnik kreira novi proizvod ukoliko isti ne postoji u sistemu
-	\item Radnik ažurira novokreiranu namirnicu pristiglom količinom i eventualno definiše minimalnu količinu. 
+    \item Zaposleni preuzima i potvrđuje listu isporučenih namirnica.
+	\item Zaposleni za svaki od proizvoda sa liste ažurira proizvod u sistemu tako što dodaje pristiglu količinu.
+	\item Zaposleni kreira novi proizvod ukoliko isti ne postoji u sistemu
+	\item Zaposleni ažurira novokreiranu namirnicu pristiglom količinom i eventualno definiše minimalnu količinu. 
 \end{enumerate}
 \textbf{Alternativni tokovi:} 
 \begin{itemize}
 \item[2.1.] Dobavljač otkazuje porudžbinu zbog manjka raspoloživih namirnica, u 4. koraku lista dostavljenih namirnica je prazna.
-\item[2.2.] Radnik kontaktira drugog dobavljača u cilju nabavke namirnica.
+\item[2.2.] Zaposleni kontaktira drugog dobavljača u cilju nabavke namirnica.
 \end{itemize}
 
 \subsubsection{Ažuriranje jelovnika}
 Nakon svake nabavke, ili periodično, potrebno je izvršiti ažuriranje jelovnika, tako da se gostima nude ona i samo ona jela koje je moguće pripremiti na osnovu stanja zaliha namirnica u restoranu.\\\\
-\textbf{Akter:} Radnik\\
+\textbf{Akter:} Zaposleni\\
 \textbf{Ulaz:} Spisak namirnica u restoranu i spisak jela sa neophodnim namirnicama za njihovu pripremu.\\
 \textbf{Izlaz:} Kreiran je jelovnik.\\
-\textbf{Preduslovi:} Radnik se uspešno prijavio na sistem. Spisak jela i sastojaka od kojih se pripremaju nije prazan.\\
+\textbf{Preduslovi:} Zaposleni se uspešno prijavio na sistem. Spisak jela i sastojaka od kojih se pripremaju nije prazan.\\
 \textbf{Postuslov:} Jelovnik je kreiran. Gosti i zaposleni ga mogu videti.\\
 \textbf{Glavni tok:} 
 \begin{enumerate}
-	\item Radnik zahteva od sistema ažuriranje jelovnika.
+	\item Zaposleni zahteva od sistema ažuriranje jelovnika.
 	\item Sistem na njegov zahtev kreira novi jelovnik tako što iz liste jela izbacuje ona za čiju pripremu nedostaje makar jedan sastojak.
 	\item Sistem postavlja kreirani jelovnik za aktuelni jelovnik ugostiteljskog objekta.
 \end{enumerate}
 \textbf{Alternativni tokovi:}
 \begin{itemize}
-\item [1.1] Sistem nema podatke koji povezuju jela i namirnice te ne može generisati novi jelovnik; sistem ne ažurira ni aktuelni jelovnik. Radnik prekida sa radom.
+\item [1.1] Sistem nema podatke koji povezuju jela i namirnice te ne može generisati novi jelovnik; sistem ne ažurira ni aktuelni jelovnik. Zaposleni prekida sa radom.
 \end{itemize}
 
 \includegraphics[width=\textwidth]{SU_1_zalihe_activity.png}
@@ -183,41 +182,41 @@ Nakon svake nabavke, ili periodično, potrebno je izvršiti ažuriranje jelovnik
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \subsection{Pregled inventara}
-Pregled inventara je slučaj upotrebe u kome se formalizuje način na koji ugostiteljski objekat planira nabavku inventara, nabavlja i ima uvid o stanju istog. U tom procesu učestvuju radnik i dobavljač. 
+Pregled inventara je slučaj upotrebe u kome se formalizuje način na koji ugostiteljski objekat planira nabavku inventara, nabavlja i ima uvid o stanju istog. U tom procesu učestvuju zaposleni i dobavljač. 
 
 \includegraphics[width=\textwidth]{SU_2_pregled_inventara.png}
 \subsubsection{Pregled stanja inventara i kreiranje porudžbine ako je potrebna}
 Trenutno stanje inventara se pregleda, i porudžbina za nabavku artikala koji nedostaju se kreira po potrebi, radi normalnog kontinualnog funkcionisanja restorana.\\\\
-\textbf{Akter:} Zaposleni restorana\\
+\textbf{Akter:} Zaposleni\\
 \textbf{Ulaz:} Nema\\
 \textbf{Izlaz:} Lista predmeta koji su poručeni jer su zalihe ispod minimalnih definisanih za poslovanje ugostiteljskog objekta\\
 \begin{enumerate}
 	\item Spisak predmeta koji spadaju u inventar ugostiteljskog objekta i njihove zalihe su usled kvara ili nestanka ispod minimalnih definisanih količina.
 	\item Lista svih predmeta i njihova trenutna količina.
 \end{enumerate} 
-\textbf{Preduslovi:} Radnik je uspešno ulogovan i ima uvid u spisak predmeta čija je količina manja od poželjne.\\
+\textbf{Preduslovi:} Zaposleni je uspešno ulogovan i ima uvid u spisak predmeta čija je količina manja od poželjne.\\
 \textbf{Postuslov:} Uspešno je kreiran i poručen spisak predmeta. Ukoliko neki predmet zahteva popravku, lista sadrži tu informaciju.\\
 \textbf{Glavni tok:} 
 \begin{enumerate}
-	\item Radnik zahteva od sistema spisak predmeta za koje važi da je trenutna količina manja od minimalne propisane ili je neki od aparata u kvaru.
+	\item Zaposleni zahteva od sistema spisak predmeta za koje važi da je trenutna količina manja od minimalne propisane ili je neki od aparata u kvaru.
 	\item Sistem kreira listu predmeta koji ispunjavaju prethodni zahtev.
-    \item Radnik uzima listu predmeta koje bi trebalo nabaviti.
-	\item Radnik procenjuje količinu za nabavku. 
-	\item Radnik proverava da li postoje predmeti koje želi da uvrsti u inventar i doda ih u porudžbinu.
-	\item Radnik kreira porudžbinu.
+    \item Zaposleni uzima listu predmeta koje bi trebalo nabaviti.
+	\item Zaposleni procenjuje količinu za nabavku. 
+	\item Zaposleni proverava da li postoje predmeti koje želi da uvrsti u inventar i doda ih u porudžbinu.
+	\item Zaposleni kreira porudžbinu.
 \end{enumerate}
 \textbf{Alternativni tokovi:}
 \begin{itemize}
-\item [1.1] Sistem nema podatke o minimalnim količinama ni za jedan predmet u sistemu, pa ne kreira pregled stanja. Radnik završava rad.
-\item [3.1] Radnik ne vrši procenu ukoliko je lista predmeta na minimalnim zalihama prazna i završava sa radom.
+\item [1.1] Sistem nema podatke o minimalnim količinama ni za jedan predmet u sistemu, pa ne kreira pregled stanja. Zaposleni završava rad.
+\item [3.1] Zaposleni ne vrši procenu ukoliko je lista predmeta na minimalnim zalihama prazna i završava sa radom.
 \end{itemize}
 
 \subsubsection{Pristizanje poručenih aparata/predmeta, i osvežavanje stanja sistema}
 Nakon isporuke potraživanih predmeta, informacioni sistem se obaveštava o njihovom postojanju, tako da bi druge komponente informacionog sistema mogle biti osvežene novim podacima.\\\\
-\textbf{Akter:} Dobavljač, radnik.\\
+\textbf{Akter:} Dobavljač, zaposleni.\\
 \textbf{Ulaz:} Spisak predmeta koje je dobavljač isporučio.\\
 \textbf{Izlaz:} Predmeti su preuzeti i ažurirana je lista predmeta koji čine inventar.\\
-\textbf{Preduslovi:} Dobavljač je dostavio poručene proizvode. Radnik se uspešno ulogovao na sistem.\\
+\textbf{Preduslovi:} Dobavljač je dostavio poručene proizvode. Zaposleni se uspešno ulogovao na sistem.\\
 \textbf{Postuslov:} Predmeti su isporučeni kupcu i ažurirane su količine proizvoda i eventualno uneti novi.\\
 \textbf{Glavni tok:} 
 \begin{enumerate}
@@ -226,15 +225,15 @@ Nakon isporuke potraživanih predmeta, informacioni sistem se obaveštava o njih
 	\item Dobavljač po potrebi, smanjuje količine koje su poručene.
 	\item Dobavljač isporučuje robu ugostiteljskom objektu.
 	\item Dobavljač pri isporuci dostavljena je lista predmeta koji su isporučeni.  
-    \item Radnik je dobio listu isporučenih proizvoda.
-	\item Radnik za svaki od proizvoda sa liste ažurira proizvod u sistemu tako što dodaje pristiglu količinu.
+    \item Zaposleni je dobio listu isporučenih proizvoda.
+	\item Zaposleni za svaki od proizvoda sa liste ažurira proizvod u sistemu tako što dodaje pristiglu količinu.
 	\item Ukoliko proizvod ne postoji u sistemu, radnik kreira proizvod sa njegovim karakteristikama.
-	\item Radnik ažurira novokreirani proizvod pristiglom količinom i eventualno definiše minimalnu količinu. 
+	\item Zaposleni ažurira novokreirani proizvod pristiglom količinom i eventualno definiše minimalnu količinu. 
 \end{enumerate}
 \textbf{Alternativni tokovi:} 
 \begin{itemize}
 \item [2.1] Zbog manjka raspoloživih predmeta, dobavljač otkazuje porudžbinu.
-\item [6.1] Porudžbina je otkazana, lista je prazna. Radnik završava rad.
+\item [6.1] Porudžbina je otkazana, lista je prazna. Zaposleni završava rad.
 \end{itemize}
 
 \includegraphics[width=\textwidth]{SU_2_pregled_inventara_activity.png}
@@ -262,8 +261,8 @@ Finansijsko stanje restorana, koje uključuje prihode i rashode registrovane kro
 \textbf{Alternativni tokovi:}\\
 \begin{itemize}
 \item [1.1.] Uneti datumi nisu validni, sistem prosleđuje poruku za ponovno unošnje datuma, nakon čega nastavlja ka koraku 2.
-\item [2.1.] Za unete datume, restoran nije imao nijedan poslovni dan, sistem prikazuje adekvatnu poruka na ekranu i menadžer se preusmerava nazad na korak 1.
-\item [2.2.] Korisnik ne želi da štampa izveštaj, već samo da ga pregleda
+\item [2.1.] Za unete datume, restoran nije imao nijedan poslovni dan, sistem prikazuje adekvatnu poruku na ekranu i menadžer se preusmerava nazad na korak 1.
+\item [2.2.] Korisnik ne želi da štampa izveštaj, već samo da ga pregleda.
 \item [3.1.] Nijedan štampač nije povezan na sistem, prikazuje se poruka o grešci.
 \end{itemize}
        
@@ -281,7 +280,7 @@ Za traženi period, moguće je izvršiti pregled najčešćih/najređih porudžb
 \end{enumerate}
 \textbf{Alternativni tokovi:}\\
 \begin{itemize}
-\item [2.1.] Uneti datumi nisu validni, sistem prosleđuje poruku za ponovno unošnje datuma, nakon čega nastavlja ka koraku 2.
+\item [2.1.] Uneti datumi nisu validni, sistem prosleđuje poruku za ponovno unošenje datuma, nakon čega nastavlja ka koraku 2.
 \item [3.1.] Za unete datume, restoran nije imao nijedan poslovni dan, prikazuje se adekvatna poruka na ekranu i korisnik se preusmerava nazad na korak 1.
 \end{itemize}
 
@@ -291,33 +290,33 @@ Za traženi period, moguće je izvršiti pregled najčešćih/najređih porudžb
 Upravljanje ljudskim resursima je slučaj upotrebe u kojem se definišu rasporedi smena i godišnjih odmora. U planiranju učestvuju radnik i menadžer.
 
 \begin{itemize}
-\item Radnik svoje želje za godišnjim odmorom predaje na odobravanje menadžeru koji te želje skuplja, obrađuje, planira i na kraju daje pozitivan ili negativan odgovor.
-\item Raspored smena pravi menažer, koji su potom dostupni na pregled radnicima.
+\item Zaposleni svoje želje za godišnjim odmorom predaje na odobravanje menadžeru koji te želje prikuplja, obrađuje, planira i na kraju daje pozitivan ili negativan odgovor.
+\item Raspored smena pravi menažer, koji su potom dostupni na pregled zaposlenima.
 \end{itemize}
 \includegraphics[width=\textwidth, height=100mm, keepaspectratio]{SU_4_hr.png}
 
 \subsubsection{Pravljenje zahteva za odmor}
-Da bi radnik ostvario svoje zagarantovano pravo na godišnji odmor, a i da bi organizacija rada bila moguća, mora pravovremeno podneti zahtev za godišnji odmor kroz informacioni sistem.\\\\
-\textbf{Akter:} Radnik\\
+Da bi zaposleni ostvario svoje zagarantovano pravo na godišnji odmor, a i da bi organizacija rada bila moguća, mora pravovremeno podneti zahtev za godišnji odmor kroz informacioni sistem.\\\\
+\textbf{Akter:} Zaposleni\\
 \textbf{Ulaz:} Nema\\
 \textbf{Izlaz:} Definisan zahtev za odmor\\
-\textbf{Preduslovi:} Radnik se uspešno prijavio na sistem\\
+\textbf{Preduslovi:} Zaposleni se uspešno prijavio na sistem\\
 \textbf{Postuslov:} Uspešno poslat zahtev za odmor\\
 \textbf{Glavni tok:}
 \begin{enumerate}
-\item Radnik bira segment datuma za odmor.
-\item Radnik potvrđuje izbor datuma i broj slobodnih dana za koji će biti umanjen njegov broj slobodnih dana.
-\item Zahtev za odmor se evidentira u sistem i sistem prosleđuje na odobravanje menadžeru.
+\item Zaposleni bira segment datuma za odmor.
+\item Zaposleni potvrđuje izbor datuma i broj slobodnih dana za koji će biti umanjen njegov broj slobodnih dana.
+\item Zahtev za odmor se evidentira u sistemu i prosleđuje na odobravanje menadžeru.
 \end{enumerate}
 \textbf{Alternativni tokovi:} \\
 \begin{itemize}
 \item [1.1.1] Uneti datumi nisu validni, sistem prosleđuje poruku za ponovno unošnje datuma, nakon čega nastavlja ka koraku 2.
-\item [1.2.1] Radnik nema dovoljno slobodnih dana da bi poslao zahtev za odmor sa unetim datumima. Ponavlja se prvi korak.
+\item [1.2.1] Zaposleni nema dovoljno slobodnih dana da bi poslao zahtev za odmor sa unetim datumima. Ponavlja se prvi korak.
 \end{itemize}
 
 \subsubsection{Obrada zahteva za odmor}
 Pristigli zahtevi za ostvarivanje prava na godišnji odmor se obrađuju, i prihvataju ili odbijaju na osnovu stanja ostalih činilaca u restoranu za navedeni period.\\
-\textbf{Akter:} Menadžer, radnik\\
+\textbf{Akter:} Menadžer, zaposleni\
 \textbf{Ulaz:} Spiskovi zahteva za odmor\\
 \textbf{Izlaz:} Definisani odgovori na zahteve\\
 \textbf{Preduslovi:} Menadžer se uspešno ulogovao na sistem i spiskovi zahteva su uspešno stigli do njega\\
@@ -326,10 +325,10 @@ Pristigli zahtevi za ostvarivanje prava na godišnji odmor se obrađuju, i prihv
 \begin{enumerate}
 \item Menadžer je obavešten da se pojavio novi zahtev za odmor (putem mejla).
 \item Menadžer se loguje u sistem za evaluaciju odmora.
-\item Za svakog radnika sa spiska, menadžer posebno gleda da li je moguće organizovati funkcionisanje restorana u datom periodu bez dotičnog radnika.
-\item Na osnovu procena stanja menadžer donosi odluku za svakog radnika pojedinačno.
-\item Za svakog radnika pojedinačno, menadžer potvrđuje odgovor koji se dalje prosleđuje sistemu.
-\item Radnik dobija informaciju da li je njegov zahtev za odmor odobren ili ne.
+\item Za svakog zaposlenog sa spiska, menadžer posebno gleda da li je moguće organizovati funkcionisanje restorana u datom periodu bez dotičnog radnika.
+\item Na osnovu procena stanja menadžer donosi odluku za svakog zaposlenog pojedinačno.
+\item Za svakog zaposlenog pojedinačno, menadžer potvrđuje odgovor koji se dalje prosleđuje sistemu.
+\item Zaposleni dobija informaciju da li je njegov zahtev za odmor odobren ili ne.
 \end{enumerate}
 \textbf{Alternativni tokovi:}\\
 \begin{itemize}
@@ -358,20 +357,20 @@ Radi normalnog funkcionisanja restorana, mora postojati jasan raspored smena zap
 
 \subsubsection{Pregled rasporeda smena}
 Definisan raspored smena je moguće pregledati kroz informacioni sistem iz perspektive zaposlenog, za dati period od interesa.\\\\
-\textbf{Akter:} Radnik\\
+\textbf{Akter:} Zaposleni\\
 \textbf{Ulaz:} Nema\\
-\textbf{Izlaz:} Raspored smena za radnika\\
-\textbf{Preduslovi:} Radnik se uspešno ulogovao u sistem\\
+\textbf{Izlaz:} Raspored smena za zaposlenog\\
+\textbf{Preduslovi:} Zaposleni se uspešno ulogovao u sistem\\
 \textbf{Postuslov:} Uspešan pregled smena\\
 \textbf{Glavni tok:}
 \begin{enumerate}
-\item Radnik unosi datum za koji želi da vidi svoj raspored smena.
-\item Radnik ima na pregled raspored smena.
+\item Zaposleni unosi datum za koji želi da vidi svoj raspored smena.
+\item Zaposleni ima na pregled raspored smena.
 \end{enumerate}
 \textbf{Alternativni tokovi:}\\
 \begin{itemize}
 \item [1.1.] Uneti datumi nisu validni, sistem prosleđuje poruku za ponovno unošnje datuma, nakon čega nastavlja ka koraku 2.
-\item[2.1.] Još nije definisan raspored smena za izabrani datum. Radnik se može vratiti na 2. korak , ili izlogovati sa sistema.
+\item[2.1.] Još nije definisan raspored smena za izabrani datum. Zaposleni se može vratiti na 2. korak , ili izlogovati sa sistema.
 \end{itemize}
 
 \includegraphics[width=\textwidth]{SU_4_Odmor.png}\\
@@ -382,7 +381,7 @@ Definisan raspored smena je moguće pregledati kroz informacioni sistem iz persp
 \textbf{Prihvatanje rezervacija gostiju} je slučaj upotrebe u kojem se vrši prihvatanje i obrada digitalnih rezervacija mesta u restoranu. U tom procesu učestvuju potencijalni gost restorana, šef smene/sale restorana, kao i ostali zaposleni.\\
 
 \begin{itemize}
-\item Potencijalni gost restorana posećuje stranicu za digitalne rezervacije i unosi sve potrebne podatke za rezervaciju
+\item Gost restorana posećuje stranicu za digitalne rezervacije i unosi sve potrebne podatke za rezervaciju
 \item Šef smene ili sale odobrava rezervaciju na osnovu pregleda prethodno unetih rezervacija i potvrdjuje(ili odbija) rezervaciju potencijalnom gostu.
 \end{itemize}
 \vspace{1cm}
@@ -390,17 +389,17 @@ Definisan raspored smena je moguće pregledati kroz informacioni sistem iz persp
 
 \subsubsection{Kreiranje rezervacije}
 Potencijalni gost restorana kreira rezervaciju posredstvom informacionog sistema.\\\\
-\textbf{Akter:} Potencijalni gost restorana (PG)\\
-\textbf{Ulaz:} Kontakt podaci potencijalnog gosta (ime, prezime, kontakt telefon ili e-mail adresa), datum rezervacije, broj gostiju, specijalne napomene\\
+\textbf{Akter:} Gost\\
+\textbf{Ulaz:} Kontakt podaci gosta (ime, prezime, kontakt telefon ili e-mail adresa), datum rezervacije, broj gostiju, specijalne napomene\\
 \textbf{Izlaz:} Redni broj zahteva za rezervaciju.\\
 \textbf{Preduslovi:} Nema.\\
 \textbf{Postuslov:} Uspešno je kreiran zahtev za rezervaciju.\\
 \textbf{Glavni tok:}
 \begin{enumerate}
-\item PG vrši navigaciju na stranu za rezervaciju
-\item PG unosi zahtevane podatke
-\item PG šalje restoranu zahtev za rezervaciju
-\item PG dobija potvrdu da je zahtev za rezervaciju dostavljen restoranu na obradu.\\
+\item Gost vrši navigaciju na stranu za rezervaciju
+\item Gost unosi zahtevane podatke
+\item Gost šalje restoranu zahtev za rezervaciju
+\item Gost dobija potvrdu da je zahtev za rezervaciju dostavljen restoranu na obradu.\\
 \end{enumerate}
 \textbf{Alternativni tokovi:}\\
 \begin{itemize}
@@ -409,7 +408,7 @@ Potencijalni gost restorana kreira rezervaciju posredstvom informacionog sistema
 \end{itemize}
 
 \subsubsection{Pregled rezervacija}
-Rezervacije koje su registrovane u informacionom sistemu mogu biti pregledane od strane zaposlenih u restoranu
+Rezervacije koje su registrovane u informacionom sistemu mogu biti pregledane od strane zaposlenih u restoranu.\\\\
 \textbf{Akter:} Zaposleni\\
 \textbf{Ulaz:} Datum i/ili broj stola za koji se pregleda spisak rezervacija.\\
 \textbf{Izlaz:} Spisak registrovanih rezervacija koje odgovaraju kriterijumu pretrage.\\
@@ -445,7 +444,7 @@ Rezervacija se uklanja ukoliko za to postoji opravdan razlog.\\\\
 \textbf{Akter:} Šef smene/sale\\
 \textbf{Ulaz:} Redni broj rezervacija koju treba obrisati i razlog brisanja.\\
 \textbf{Izlaz:} Nema.\\
-\textbf{Preduslovi:}Šef se uspešno prijavio na sistem i ima pravo da pristupi meniju za uklanjanje registrovanih rezervacija. Postoji validan razlog za uklanjanje rezervacije koji je iskomuniciran sa klijentom (sa čije god strane da je razlog potekao).\\
+\textbf{Preduslovi:}Šef se uspešno prijavio na sistem i ima pravo da pristupi meniju za uklanjanje registrovanih rezervacija. Postoji validan razlog za uklanjanje rezervacije koji je iskomuniciran sa gostom (sa čije god strane da je razlog potekao).\\
 \textbf{Postuslov:} Rezervacija sa datim rednim brojem je uklonjena iz sistema i razlog uklanjanja je registrovan.\\
 \textbf{Glavni tok:}
 \begin{enumerate}
@@ -458,10 +457,10 @@ Rezervacija se uklanja ukoliko za to postoji opravdan razlog.\\\\
 \item [2.1.] Rezervacija sa datim rednim brojem ne postoji u sistemu. Sistem prikazuje grešku i prikazuje spisak poslednjih deset uklonjenih rezervacija, šef zaršava sa radom.
 \end{itemize}
 
-\subsubsection{Potvrda rezervacije klijentu}
-Klijentu čija je rezervacija odobrena, potvrđuje se prijem i prihvatanje rezervacije na osnovu kontakt podataka prisutnih u informacionom sistemu. Ovaj korak je neophodan radi sprečavanja zloupotrebe digitalnog sistema za rezervaciju.\\\\
-\textbf{Akter:} Šef smene/sale, potencijalni gost restorana (PG).\\
-\textbf{Ulaz:} Redni broj rezervacije i kontakt podaci potencijalnog gosta.\\
+\subsubsection{Potvrda rezervacije gostu}
+Gostu čija je rezervacija odobrena, potvrđuje se prijem i prihvatanje rezervacije na osnovu kontakt podataka prisutnih u informacionom sistemu. Ovaj korak je neophodan radi sprečavanja zloupotrebe digitalnog sistema za rezervaciju.\\\\
+\textbf{Akter:} Šef smene/sale, gost.\\
+\textbf{Ulaz:} Redni broj rezervacije i kontakt podaci gosta.\\
 \textbf{Izlaz:} Rezervacija je potvrdjena ili ne.\\
 \textbf{Preduslovi:} Šef se uspešno prijavio na sistem i ima pravo da pristupi meniju za potvrđivanje rezervacija.\\
 \textbf{Postuslov:} Rezervacija je potvrđena.\\
@@ -546,8 +545,8 @@ Napravljenu narudžbinu dostavljač odnosi na adresu navedenu u samom zahtevu.\\
 Obrada porudžbine gosta je slučaj upotrebe u kojem gost biva uslužen od strane osoblja restorana uz razmenu informacija između gosta i kuhinje posredstvom informacionog sistema.
 
 \subsubsection{Gost poručuje jelo}
-Gost nakon pregledanja restoranskog menija poručuje jelo od konobara, koji narudžbinu prosledjuje do kuhinje posredstvom informacionog sistema.\\\\
-\textbf{Akteri:} Gost, konobar, kuhinja\\
+Gost nakon pregledanja restoranskog menija poručuje jelo od konobara, koji narudžbinu prosledjuje do kuhinjskog osoblja posredstvom informacionog sistema.\\\\
+\textbf{Akteri:} Gost, konobar, kuhinjsko osoblje\\
 \textbf{Ulaz:} Jelovnik.\\
 \textbf{Izlaz:} Osvežen globalni spisak porudžbina novom porudžbinom.\\
 \textbf{Preduslov:} Gost je u restoranu.\\
@@ -557,25 +556,25 @@ Gost nakon pregledanja restoranskog menija poručuje jelo od konobara, koji naru
 \item Gost potražuje jelo sa menija
 \item Konobar beleži narudžbinu 
 \item Konobar dodaje porudžbinu na listu porudžbina.
-\item Kuhinja prati promene na listi porudžbina, i u skladu sa time započinje pripremu jela \\
+\item Kuhinjsko osoblje prati promene na listi porudžbina, i u skladu sa time započinje pripremu jela \\
 \end{enumerate}
 
 \subsubsection{Konobar isporučuje jelo}
 Konobar preuzima gotova jela iz kuhinje nakon signala dobijenog posredstvom informacionog sistema i završava proces usluživanja gosta.\\\\
-\textbf{Akteri:} Gost, konobar, kuhinja\\
+\textbf{Akteri:} Gost, konobar, kuhinjsko osoblje\\
 \textbf{Ulaz:} Gotovo jelo koje je konobar preuzeo iz kuhinje.\\
 \textbf{Izlaz:} Posluženo jelo.\\
 \textbf{Preduslov:} Pripremljena sva jela sa odabrane porudžbine.\\
 \textbf{Postuslov:} Gostu je posluženo jelo.\\
 \textbf{Glavni tok:}
 \begin{enumerate}
-\item Kuhinja nakon završetka pripreme svih jela sa porudžbine gosta osvežava status porudžbine u listi porudžbina
+\item Kuhinjsko osoblje nakon završetka pripreme svih jela sa porudžbine gosta osvežava status porudžbine u listi porudžbina
 \item Konobar preuzima jela i uslužuje ih gostu \\
 \end{enumerate}
 \textbf{Alternativni tokovi:}
 \begin{enumerate}
 \item Nema svih sastojaka potrebnih za pripremu jela.
-\item Kuvar naručuje potrebne sastojke, ukoliko ne mogu da stignu u određenom vremenskom periodu, kontaktira se konobar da pita mušteriju za drugi odabir. 
+\item Kuhinjsko osoblje naručuje potrebne sastojke, ukoliko ne mogu da stignu u određenom vremenskom periodu, kontaktira se konobar da pita mušteriju za drugi odabir. 
 \end{enumerate}
 
   \includegraphics[width=\textwidth]{SU_7_konobar_kuhinja.png}
